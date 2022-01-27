@@ -2,7 +2,7 @@ import { FC } from "react";
 import { CommonHead } from "./";
 
 interface PageLayoutProp {
-  CommonHeadComp?: React.ReactNode;
+  CommonHeadComp?: React.ReactElement;
   hideHeader?: boolean;
   hideFooter?: boolean;
 }
