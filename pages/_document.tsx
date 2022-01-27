@@ -5,6 +5,9 @@ class CustomDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta name="description" content="E360 Case Management System by LVMT" />
+          <link rel="icon" href="/favicon.ico" />
+
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
