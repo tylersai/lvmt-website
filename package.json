@@ -2,7 +2,7 @@
   "name": "website",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "PORT=3200 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
