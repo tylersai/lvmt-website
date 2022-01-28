@@ -29,6 +29,18 @@ $font-weight-semi-bold: 500;
 $font-weight-bold: 600;
 $font-weight-bolder: 800;
 
+/* E360 Gray Scale */
+$sh-light: #f8f9fa; // $gray-100
+$sh-gray-lightest: #eeeeee;
+$sh-gray-lighter: #dddddd;
+$sh-gray-light: #cccccc;
+$sh-gray: #888888;
+$sh-gray-dark: #666666;
+$sh-dark: #495057; // $gray-700
+
+// Change default text color to $gray-700
+$body-color: $sh-dark;
+
 // 3. Include remainder of required Bootstrap stylesheets
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
