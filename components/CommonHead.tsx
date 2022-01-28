@@ -5,7 +5,7 @@ interface CommonHeadProp {
   title?: string;
 }
 
-export const CommonHead: FC<CommonHeadProp> = ({ children, title = "E360 Case Management System" }) => {
+export const CommonHead: FC<CommonHeadProp> = ({ children, title = "E360" }) => {
   return (
     <Head>
       <title>{title}</title>
