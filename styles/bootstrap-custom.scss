@@ -59,3 +59,24 @@ $body-color: $sh-dark;
 @import "~bootstrap/scss/utilities/api";
 
 // 6. Add additional custom code here
+.text-sh-light {
+  color: $sh-light;
+}
+.text-sh-gray-lightest {
+  color: $sh-gray-lightest;
+}
+.text-sh-gray-lighter {
+  color: $sh-gray-lighter;
+}
+.text-sh-gray-light {
+  color: $sh-gray-light;
+}
+.text-sh-gray {
+  color: $sh-gray;
+}
+.text-sh-gray-dark {
+  color: $sh-gray-dark;
+}
+.text-sh-dark {
+  color: $sh-dark;
+}
