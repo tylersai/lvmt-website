@@ -80,3 +80,14 @@ $body-color: $sh-dark;
 .text-sh-dark {
   color: $sh-dark;
 }
+
+// Change to css variable
+:root {
+  --sh-light: $sh-light;
+  --sh-gray-lightest: $sh-gray-lightest;
+  --sh-gray-lighter: $sh-gray-lighter;
+  --sh-gray-light: $sh-gray-light;
+  --sh-gray: $sh-gray;
+  --sh-gray-dark: $sh-gray-dark;
+  --sh-dark: $sh-dark;
+}
