@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CommonHead } from "./";
+import { CommonHead, Navbar } from "./";
 
 interface PageLayoutProp {
   CommonHeadComp?: React.ReactElement;
@@ -7,10 +7,16 @@ interface PageLayoutProp {
   hideFooter?: boolean;
 }
 
-export const PageLayout: FC<PageLayoutProp> = ({ CommonHeadComp = <CommonHead />, children }) => {
+export const PageLayout: FC<PageLayoutProp> = ({
+  CommonHeadComp = <CommonHead />,
+  children,
+  hideHeader,
+  hideFooter,
+}) => {
   return (
     <div className="PageLayout">
       {CommonHeadComp}
+      {!hideHeader && <Navbar />}
       {children}
     </div>
   );
