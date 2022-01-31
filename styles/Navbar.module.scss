@@ -38,4 +38,8 @@
   font-weight: 500;
   padding: 12px 16px;
   border-radius: 8px;
+  transition: var(--transition);
+  &:hover {
+    opacity: 0.9;
+  }
 }
