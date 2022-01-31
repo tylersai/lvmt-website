@@ -1,0 +1,41 @@
+.Navbar {
+  padding: 0 52px;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  top: 0;
+}
+
+.logoWrapper {
+  padding: 42px 16px;
+  gap: 30px;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.menuWrapper {
+  padding: 52px 0;
+  gap: 48px;
+  li {
+    list-style: none;
+    a,
+    a:hover,
+    a:visited,
+    a:active {
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--sh-dark);
+    }
+  }
+}
+
+.button {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
