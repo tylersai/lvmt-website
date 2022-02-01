@@ -76,6 +76,17 @@ $body-color: $sh-dark;
 @import "~bootstrap/scss/utilities/api";
 
 // 6. Add additional custom code here
+
+// Generate blue color variants
+@each $color, $value in $blues {
+  .text-#{$color} {
+    color: var(--#{$variable-prefix}#{$color});
+  }
+  .bg-#{$color} {
+    color: var(--#{$variable-prefix}#{$color});
+  }
+}
+
 .text-sh-light {
   color: #{$sh-light};
 }
