@@ -1,0 +1,31 @@
+.Button {
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: var(--transition);
+  color: var(--sh-light);
+}
+
+.Button_primary {
+  @extend .Button;
+  background-color: var(--bs-blue-500);
+  &:hover {
+    background-color: var(--bs-blue-600);
+  }
+}
+.Button_secondary {
+  @extend .Button;
+  background-color: var(--bs-pink-500);
+  &:hover {
+    background-color: var(--bs-pink-600);
+  }
+}
+.Button_default {
+  @extend .Button;
+  background-color: var(--bs-gray-700);
+  &:hover {
+    background-color: var(--bs-gray-800);
+  }
+}
