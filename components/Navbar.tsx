@@ -3,6 +3,7 @@ import { FC } from "react";
 import classNames from "classnames";
 import styles from "../styles/Navbar.module.scss";
 import Link from "next/link";
+import { Button } from ".";
 
 export const Navbar: FC = () => {
   return (
@@ -33,9 +34,7 @@ export const Navbar: FC = () => {
           </Link>
         </li>
         <li>
-          <Link href="/login">
-            <a className={classNames(styles.button, "bg-primary text-light")}>Login</a>
-          </Link>
+          <Button>Login</Button>
         </li>
       </ul>
     </nav>

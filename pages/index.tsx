@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { PageLayout } from "../components";
+import { Button, PageLayout } from "../components";
 import styles from "../styles/Home.module.scss";
 
 const Home: NextPage = () => {
@@ -11,6 +11,11 @@ const Home: NextPage = () => {
           <p className={styles.description}>
             <i className="bi bi-triangle-half"></i> Get started with E360 Case Management System.
           </p>
+          <div className="d-flex" style={{ gap: "8px" }}>
+            <Button>primary</Button>
+            <Button color="secondary">secondary</Button>
+            <Button color="default">default</Button>
+          </div>
         </main>
       </div>
     </PageLayout>
