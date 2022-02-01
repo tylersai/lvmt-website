@@ -38,6 +38,17 @@ $sh-gray: #888888;
 $sh-gray-dark: #666666;
 $sh-dark: #495057; // $gray-700
 
+$cus-prefix: sh-;
+$custom-gray: (
+  "light": $sh-light,
+  "gray-lightest": $sh-gray-lightest,
+  "gray-lighter": $sh-gray-lighter,
+  "gray-light": $sh-gray-light,
+  "gray": $sh-gray,
+  "gray-dark": $sh-gray-dark,
+  "dark": $sh-dark,
+);
+
 // Change default text color to $gray-700
 $body-color: $sh-dark;
 
@@ -50,17 +61,10 @@ $body-color: $sh-dark;
   @each $color, $value in $blues {
     --#{$variable-prefix}#{$color}: #{$value};
   }
-}
 
-// Change to CSS variables
-:root {
-  --sh-light: #{$sh-light};
-  --sh-gray-lightest: #{$sh-gray-lightest};
-  --sh-gray-lighter: #{$sh-gray-lighter};
-  --sh-gray-light: #{$sh-gray-light};
-  --sh-gray: #{$sh-gray};
-  --sh-gray-dark: #{$sh-gray-dark};
-  --sh-dark: #{$sh-dark};
+  @each $color, $value in $custom-gray {
+    --#{$cus-prefix}#{$color}: #{$value};
+  }
 }
 
 // 4. Include any optional Bootstrap CSS as needed
@@ -83,50 +87,15 @@ $body-color: $sh-dark;
     color: var(--#{$variable-prefix}#{$color});
   }
   .bg-#{$color} {
-    color: var(--#{$variable-prefix}#{$color});
+    background-color: var(--#{$variable-prefix}#{$color});
   }
 }
 
-.text-sh-light {
-  color: #{$sh-light};
-}
-.text-sh-gray-lightest {
-  color: #{$sh-gray-lightest};
-}
-.text-sh-gray-lighter {
-  color: #{$sh-gray-lighter};
-}
-.text-sh-gray-light {
-  color: #{$sh-gray-light};
-}
-.text-sh-gray {
-  color: #{$sh-gray};
-}
-.text-sh-gray-dark {
-  color: #{$sh-gray-dark};
-}
-.text-sh-dark {
-  color: #{$sh-dark};
-}
-
-.bg-sh-light {
-  background-color: #{$sh-light};
-}
-.bg-sh-gray-lightest {
-  background-color: #{$sh-gray-lightest};
-}
-.bg-sh-gray-lighter {
-  background-color: #{$sh-gray-lighter};
-}
-.bg-sh-gray-light {
-  background-color: #{$sh-gray-light};
-}
-.bg-sh-gray {
-  background-color: #{$sh-gray};
-}
-.bg-sh-gray-dark {
-  background-color: #{$sh-gray-dark};
-}
-.bg-sh-dark {
-  background-color: #{$sh-dark};
+@each $color, $value in $custom-gray {
+  .text-#{$cus-prefix}#{$color} {
+    color: var(--#{$cus-prefix}#{$color});
+  }
+  .bg-#{$cus-prefix}#{$color} {
+    background-color: var(--#{$cus-prefix}#{$color});
+  }
 }
