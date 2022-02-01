@@ -48,7 +48,7 @@ $body-color: $sh-dark;
 
 :root {
   @each $color, $value in $blues {
-    --#{$variable-prefix}-#{$color}: #{$value};
+    --#{$variable-prefix}#{$color}: #{$value};
   }
 }
 
