@@ -40,6 +40,6 @@
   border-radius: 8px;
   transition: var(--transition);
   &:hover {
-    opacity: 0.9;
+    background-color: var(--bs-blue-600) !important;
   }
 }
