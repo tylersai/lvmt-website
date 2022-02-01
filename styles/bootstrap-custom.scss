@@ -62,6 +62,10 @@ $body-color: $sh-dark;
     --#{$variable-prefix}#{$color}: #{$value};
   }
 
+  @each $color, $value in $pinks {
+    --#{$variable-prefix}#{$color}: #{$value};
+  }
+
   @each $color, $value in $custom-gray {
     --#{$cus-prefix}#{$color}: #{$value};
   }
@@ -83,6 +87,15 @@ $body-color: $sh-dark;
 
 // Generate blue color variants
 @each $color, $value in $blues {
+  .text-#{$color} {
+    color: var(--#{$variable-prefix}#{$color});
+  }
+  .bg-#{$color} {
+    background-color: var(--#{$variable-prefix}#{$color});
+  }
+}
+
+@each $color, $value in $pinks {
   .text-#{$color} {
     color: var(--#{$variable-prefix}#{$color});
   }
