@@ -46,6 +46,23 @@ $body-color: $sh-dark;
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
 
+:root {
+  @each $color, $value in $blues {
+    --#{$variable-prefix}-#{$color}: #{$value};
+  }
+}
+
+// Change to CSS variables
+:root {
+  --sh-light: #{$sh-light};
+  --sh-gray-lightest: #{$sh-gray-lightest};
+  --sh-gray-lighter: #{$sh-gray-lighter};
+  --sh-gray-light: #{$sh-gray-light};
+  --sh-gray: #{$sh-gray};
+  --sh-gray-dark: #{$sh-gray-dark};
+  --sh-dark: #{$sh-dark};
+}
+
 // 4. Include any optional Bootstrap CSS as needed
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/reboot";
@@ -60,34 +77,45 @@ $body-color: $sh-dark;
 
 // 6. Add additional custom code here
 .text-sh-light {
-  color: $sh-light;
+  color: #{$sh-light};
 }
 .text-sh-gray-lightest {
-  color: $sh-gray-lightest;
+  color: #{$sh-gray-lightest};
 }
 .text-sh-gray-lighter {
-  color: $sh-gray-lighter;
+  color: #{$sh-gray-lighter};
 }
 .text-sh-gray-light {
-  color: $sh-gray-light;
+  color: #{$sh-gray-light};
 }
 .text-sh-gray {
-  color: $sh-gray;
+  color: #{$sh-gray};
 }
 .text-sh-gray-dark {
-  color: $sh-gray-dark;
+  color: #{$sh-gray-dark};
 }
 .text-sh-dark {
-  color: $sh-dark;
+  color: #{$sh-dark};
 }
 
-// Change to css variable
-:root {
-  --sh-light: $sh-light;
-  --sh-gray-lightest: $sh-gray-lightest;
-  --sh-gray-lighter: $sh-gray-lighter;
-  --sh-gray-light: $sh-gray-light;
-  --sh-gray: $sh-gray;
-  --sh-gray-dark: $sh-gray-dark;
-  --sh-dark: $sh-dark;
+.bg-sh-light {
+  background-color: #{$sh-light};
+}
+.bg-sh-gray-lightest {
+  background-color: #{$sh-gray-lightest};
+}
+.bg-sh-gray-lighter {
+  background-color: #{$sh-gray-lighter};
+}
+.bg-sh-gray-light {
+  background-color: #{$sh-gray-light};
+}
+.bg-sh-gray {
+  background-color: #{$sh-gray};
+}
+.bg-sh-gray-dark {
+  background-color: #{$sh-gray-dark};
+}
+.bg-sh-dark {
+  background-color: #{$sh-dark};
 }
