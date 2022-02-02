@@ -15,26 +15,28 @@ export const Navbar: FC = () => {
       <ul className={classNames(styles.menuWrapper, "mb-0 d-flex align-items-center")}>
         <li>
           <Link href="/">
-            <a>Home</a>
+            <a className={styles.navLink}>Home</a>
           </Link>
         </li>
         <li>
           <Link href="/pricing">
-            <a>Pricing</a>
+            <a className={styles.navLink}>Pricing</a>
           </Link>
         </li>
         <li>
           <Link href="/about">
-            <a>About</a>
+            <a className={styles.navLink}>About</a>
           </Link>
         </li>
         <li>
           <Link href="/contact">
-            <a>Contact</a>
+            <a className={styles.navLink}>Contact</a>
           </Link>
         </li>
         <li>
-          <Button>Login</Button>
+          <Button component="a" href="/login">
+            Login
+          </Button>
         </li>
       </ul>
     </nav>
