@@ -5,6 +5,7 @@
   }
   h5 {
     font-size: 16px;
+    letter-spacing: 1px;
   }
   p {
     opacity: 0.8;
@@ -22,5 +23,9 @@
     &:hover {
       color: var(--bs-blue-400);
     }
+  }
+  span {
+    font-size: 14px;
+    color: var(--sh-gray-dark);
   }
 }

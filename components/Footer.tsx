@@ -40,17 +40,17 @@ const LinkGroup: React.FC<LinkGroupProps> = ({ heading, links }) => (
       links.map((el, i) =>
         el.href ? (
           <Link key={i} href={el.href}>
-            <a>{el.text}</a>
+            <a className="text-nowrap">{el.text}</a>
           </Link>
         ) : (
-          <p className="my-0" key={i}>
+          <span className="my-0" key={i}>
             {el.text.split("\n").map((el) => (
               <Fragment key={el}>
-                <span>{el}</span>
+                <span className="text-nowrap">{el}</span>
                 <br />
               </Fragment>
             ))}
-          </p>
+          </span>
         )
       )}
   </div>
@@ -59,7 +59,7 @@ const LinkGroup: React.FC<LinkGroupProps> = ({ heading, links }) => (
 export const Footer: React.FC = () => {
   return (
     <footer className={classNames("container-fluid bg-sh-gray-lightest pt-5 pb-4", styles.Footer)}>
-      <div className="row justify-content-center">
+      <div className="row justify-content-center pb-3">
         <div className="col-md-4 px-5 px-md-3 pb-4">
           <h1 className="text-primary text-shadow mb-4">E360</h1>
           <p>A powerful case management software for individual lawyers and law firms.</p>
