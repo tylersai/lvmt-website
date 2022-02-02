@@ -17,7 +17,7 @@ export const PageLayout: FC<PageLayoutProp> = ({
     <div className="PageLayout">
       {CommonHeadComp}
       {!hideHeader && <Navbar />}
-      <main className="container-fluid vh-100">{children}</main>
+      <main className="container-fluid d-flex flex-column align-items-stretch">{children}</main>
       {!hideFooter && <Footer />}
     </div>
   );

@@ -5,10 +5,10 @@ import styles from "../styles/NotFound.module.scss";
 const NotFound: NextPage = () => {
   return (
     <PageLayout>
-      <div className="h-100 d-flex flex-column justify-content-center align-items-center">
+      <section className="d-flex flex-column justify-content-center align-items-center">
         <h1 className={styles.title}>404</h1>
-        <h1 className={styles.title}>Not Found</h1>
-      </div>
+        <h2 className="text-uppercase mt-2">Not Found</h2>
+      </section>
     </PageLayout>
   );
 };

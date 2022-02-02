@@ -7,3 +7,16 @@
 .text-shadow {
   text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
 }
+
+.PageLayout > main {
+  min-height: 100vh;
+}
+.PageLayout > main > section {
+  min-height: 100vh;
+}
+.PageLayout > main > section:nth-child(odd) {
+  background-color: #fff;
+}
+.PageLayout > main > section:nth-child(even) {
+  background-color: #fafafa;
+}
