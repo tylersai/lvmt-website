@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import Link from "next/link";
 import React, { Fragment } from "react";
+import { IconLink } from ".";
 import styles from "../styles/Footer.module.scss";
 
 interface LinkGroupProps {
@@ -61,8 +62,19 @@ export const Footer: React.FC = () => {
     <footer className={classNames("container-fluid bg-sh-gray-lightest pt-5 pb-4", styles.Footer)}>
       <div className="row justify-content-center pb-3">
         <div className="col-md-4 px-5 px-md-3 pb-4">
-          <h1 className="text-primary text-shadow mb-4">E360</h1>
-          <p>A powerful case management software for individual lawyers and law firms.</p>
+          <h1 className="text-primary text-center text-md-start text-shadow mb-3">E360</h1>
+          <p className="text-center text-md-start">
+            A powerful case management software for individual lawyers and law firms.
+          </p>
+          <div
+            className="d-flex align-items-center justify-content-center justify-content-md-start py-3 w-100"
+            style={{ gap: "14px" }}
+          >
+            <IconLink href="http://facebook.com/lvmt" icon="facebook" />
+            <IconLink href="http://twitter.com/lvmt" icon="twitter" />
+            <IconLink href="http://instagram.com/lvmt" icon="instagram" />
+            <IconLink href="http://linkedin.com/in/lvmt" icon="linkedin" />
+          </div>
         </div>
         <div className="col-md-7 px-5 px-md-3">
           <div className="row justify-content-center">
