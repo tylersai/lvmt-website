@@ -17,7 +17,7 @@ export const PageLayout: FC<PageLayoutProp> = ({
     <div className="PageLayout">
       {CommonHeadComp}
       {!hideHeader && <Navbar />}
-      {children}
+      <main className="container-fluid vh-100">{children}</main>
     </div>
   );
 };

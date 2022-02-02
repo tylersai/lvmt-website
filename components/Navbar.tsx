@@ -7,7 +7,7 @@ import { Button } from ".";
 
 export const Navbar: FC = () => {
   return (
-    <nav className={classNames(styles.Navbar, "d-flex align-items-center justify-content-between")}>
+    <header className={classNames(styles.Navbar, "d-flex align-items-center justify-content-between")}>
       <div className={classNames(styles.logoWrapper, "d-flex align-items-center")}>
         <Image src="/logo@128x128.png" alt="Logo" role="img" width={52} height={52} />
         <h1 className={classNames(styles.brand, "mb-0 text-primary")}>E360</h1>
@@ -39,6 +39,6 @@ export const Navbar: FC = () => {
           </Button>
         </li>
       </ul>
-    </nav>
+    </header>
   );
 };
