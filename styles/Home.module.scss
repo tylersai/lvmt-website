@@ -1,15 +1,29 @@
 .title {
+  line-height: 58px;
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.desc {
+  margin-top: 2rem;
+  margin-bottom: 2.75rem;
+  line-height: 32px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.title2 {
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
 }
 
-.title,
-.description {
+.title2,
+.description2 {
   text-align: center;
 }
 
-.description {
+.description2 {
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;

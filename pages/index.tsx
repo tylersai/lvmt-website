@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import type { NextPage } from "next";
 import { Button, PageLayout } from "../components";
 import styles from "../styles/Home.module.scss";
@@ -5,9 +6,25 @@ import styles from "../styles/Home.module.scss";
 const Home: NextPage = () => {
   return (
     <PageLayout>
+      <section className="row flex-row-reverse justify-content-center align-items-stretch">
+        <div className="col-md-5"></div>
+        <div className="col-md-5 d-flex flex-column justify-content-center align-items-start">
+          <h1 className={classNames("text-primary", styles.title)}>
+            Case Management <br />
+            made easier.
+          </h1>
+          <p className={classNames("text-sh-gray", styles.desc)}>
+            Introducing <strong>E360</strong>, a case management software system for faster productivity and better
+            managed legal records for professional lawyers and law firms.
+          </p>
+          <Button component="a" href="/join-now">
+            Join Now <i className="bi bi-arrow-right"></i>
+          </Button>
+        </div>
+      </section>
       <section className="d-flex flex-column justify-content-center align-items-center">
-        <h1 className={styles.title}>Welcome to E360</h1>
-        <p className={styles.description}>
+        <h1 className={styles.title2}>Welcome to E360</h1>
+        <p className={styles.description2}>
           <i className="bi bi-triangle-half"></i> Get started with E360 Case Management System.
         </p>
         <div className="d-flex" style={{ gap: "8px" }}>
@@ -15,13 +32,6 @@ const Home: NextPage = () => {
           <Button color="secondary">secondary</Button>
           <Button color="default">default</Button>
         </div>
-      </section>
-      <section>
-        <p className="text-center my-5">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero perferendis voluptate quas culpa vel hic
-          exercitationem accusantium dignissimos dolorem ullam omnis magni, nulla asperiores eum totam voluptatem
-          tenetur unde enim!
-        </p>
       </section>
     </PageLayout>
   );
