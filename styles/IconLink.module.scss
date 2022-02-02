@@ -1,0 +1,23 @@
+.IconLink {
+  --size: 36px;
+  width: var(--size);
+  height: var(--size);
+  min-height: var(--size);
+  min-width: var(--size);
+  max-height: var(--size);
+  max-width: var(--size);
+  border-radius: calc(var(--size) / 2);
+  text-decoration: none;
+  transition: var(--transition);
+  color: var(--bs-blue-300);
+  background-color: var(--bs-blue-100);
+  opacity: 0.85;
+  i {
+    color: var(--bs-blue-500);
+    transition: var(--transition);
+    font-size: 16px;
+  }
+  &:hover {
+    opacity: 1;
+  }
+}
