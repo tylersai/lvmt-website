@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CommonHead, Navbar } from "./";
+import { CommonHead, Navbar, Footer } from "./";
 
 interface PageLayoutProp {
   CommonHeadComp?: React.ReactElement;
@@ -18,6 +18,7 @@ export const PageLayout: FC<PageLayoutProp> = ({
       {CommonHeadComp}
       {!hideHeader && <Navbar />}
       <main className="container-fluid vh-100">{children}</main>
+      {!hideFooter && <Footer />}
     </div>
   );
 };
