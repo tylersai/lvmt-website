@@ -6,6 +6,10 @@
   border-radius: 8px;
   transition: var(--transition);
   color: var(--sh-light);
+  text-decoration: none;
+  &:hover {
+    color: var(--sh-light);
+  }
 }
 
 .Button_primary {
