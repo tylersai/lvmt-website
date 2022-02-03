@@ -4,6 +4,7 @@ import styles from "../styles/Button.module.scss";
 
 type ButtonColor = "primary" | "default" | "secondary";
 type ButtonComponent = "button" | "a";
+type IconPlacement = "left" | "right";
 
 interface ButtonProps {
   component?: ButtonComponent;
@@ -11,6 +12,8 @@ interface ButtonProps {
   className?: string;
   href?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  icon?: string;
+  iconPlacement?: IconPlacement;
 }
 
 export const Button: FC<ButtonProps> = ({
@@ -19,10 +22,16 @@ export const Button: FC<ButtonProps> = ({
   className,
   onClick,
   href = "#",
+  icon,
+  iconPlacement = "right",
   children,
 }) =>
   React.createElement(
     component,
-    { className: classNames(styles[`Button_${color}`], className), onClick, href },
-    children
+    { className: classNames("d-inline-flex align-items-center", styles[`Button_${color}`], className), onClick, href },
+    <>
+      {icon && iconPlacement == "left" && <i className={`bi bi-${icon} me-2`}></i>}
+      <span>{children}</span>
+      {icon && iconPlacement == "right" && <i className={`bi bi-${icon} ms-2`}></i>}
+    </>
   );

@@ -20,8 +20,8 @@ const Home: NextPage = () => {
             Introducing <strong>E360</strong>, a case management software system for faster productivity and better
             managed legal records for professional lawyers and law firms.
           </p>
-          <Button component="a" href="/join-now">
-            Join Now <i className="bi bi-arrow-right"></i>
+          <Button component="a" href="/join-now" icon="arrow-right">
+            Join Now
           </Button>
         </div>
       </section>
