@@ -30,10 +30,33 @@ const Home: NextPage = () => {
         <p className={styles.description2}>
           <i className="bi bi-triangle-half"></i> Get started with E360 Case Management System.
         </p>
+        <p className="mb-2">Buttons:</p>
         <div className="d-flex" style={{ gap: "8px" }}>
           <Button>primary</Button>
           <Button color="secondary">secondary</Button>
           <Button color="default">default</Button>
+        </div>
+        <p className="mt-4 mb-2">Buttons with right icon:</p>
+        <div className="d-flex" style={{ gap: "8px" }}>
+          <Button icon="bookmark-check">primary</Button>
+          <Button color="secondary" icon="box-arrow-in-down">
+            secondary
+          </Button>
+          <Button color="default" icon="bell">
+            default
+          </Button>
+        </div>
+        <p className="mt-4 mb-2">Buttons with left icon:</p>
+        <div className="d-flex" style={{ gap: "8px" }}>
+          <Button icon="chevron-right" iconPlacement="left">
+            primary
+          </Button>
+          <Button color="secondary" icon="chevron-double-right" iconPlacement="left">
+            secondary
+          </Button>
+          <Button color="default" icon="brightness-high" iconPlacement="left">
+            default
+          </Button>
         </div>
       </section>
     </PageLayout>
