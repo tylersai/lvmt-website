@@ -51,6 +51,13 @@ const FeatureCard: FC<FeatureCardProps> = ({
   </div>
 );
 
+const FeatureBenefitBox: FC<{ imgSrc: string; text: string }> = ({ imgSrc, text }) => (
+  <div className="col-5 col-lg-2 p-3 m-3 d-flex flex-column align-items-center">
+    <Image src={imgPref + imgSrc} width={110} height={110} alt="benefit icon" />
+    <p className="text-sh-gray text-center mt-3 fw-400">{text}</p>
+  </div>
+);
+
 const Home: NextPage = () => {
   return (
     <PageLayout>
@@ -98,6 +105,12 @@ const Home: NextPage = () => {
         <p className={classNames(styles.featureQuote, "text-center text-sh-gray px-2 py-4 py-md-5 m-0")}>
           Priorties change... but the challenges remain constant!
         </p>
+        <div className="row justify-content-evenly">
+          <FeatureBenefitBox imgSrc="/planning-img.png" text="Planning for an Uncertain Future" />
+          <FeatureBenefitBox imgSrc="/profit-img.png" text="Increasing Project Profitability" />
+          <FeatureBenefitBox imgSrc="/expectation-img.png" text="Delivering beyond Client Expectations" />
+          <FeatureBenefitBox imgSrc="/model-img.png" text="Driving Business Model Diversification" />
+        </div>
       </HomeSection>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <h1 className={styles.title2}>Welcome to E360</h1>
