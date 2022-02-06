@@ -66,6 +66,14 @@ $body-color: $sh-dark;
     --#{$variable-prefix}#{$color}: #{$value};
   }
 
+  @each $color, $value in $indigos {
+    --#{$variable-prefix}#{$color}: #{$value};
+  }
+
+  @each $color, $value in $cyans {
+    --#{$variable-prefix}#{$color}: #{$value};
+  }
+
   @each $color, $value in $custom-gray {
     --#{$cus-prefix}#{$color}: #{$value};
   }
@@ -96,6 +104,24 @@ $body-color: $sh-dark;
 }
 
 @each $color, $value in $pinks {
+  .text-#{$color} {
+    color: var(--#{$variable-prefix}#{$color});
+  }
+  .bg-#{$color} {
+    background-color: var(--#{$variable-prefix}#{$color});
+  }
+}
+
+@each $color, $value in $indigos {
+  .text-#{$color} {
+    color: var(--#{$variable-prefix}#{$color});
+  }
+  .bg-#{$color} {
+    background-color: var(--#{$variable-prefix}#{$color});
+  }
+}
+
+@each $color, $value in $cyans {
   .text-#{$color} {
     color: var(--#{$variable-prefix}#{$color});
   }
