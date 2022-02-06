@@ -112,6 +112,40 @@ const Home: NextPage = () => {
           <FeatureBenefitBox imgSrc="/model-img.png" text="Driving Business Model Diversification" />
         </div>
       </HomeSection>
+      <HomeSection
+        sectionTitle="advantages"
+        sectionDesc="E360 also serves as a pratice and invoice management platform"
+      >
+        <div className="row justify-content-evenly">
+          <div className="col-md-6">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="img-fluid" src={imgPref + "/e360-circle.png"} alt="E360 Platform" />
+          </div>
+          <div className="col-md-4 px-2 pt-4 pt-lg-5">
+            <h5>Practice Management Cloud Advantages</h5>
+            <ul className="my-4">
+              <li className="text-sh-gray mb-3">
+                <strong className="text-blue-400">Seamlessly connect</strong> all processes across Practice, HR, Finance
+                and Management Teams
+              </li>
+              <li className="text-sh-gray mb-3">
+                <strong className="text-blue-400">Analyze and prioritize</strong> cases, process processes across
+                Practice, HR, Finance and Management Teams
+              </li>
+              <li className="text-sh-gray mb-3">
+                <strong className="text-blue-400">Plan and execute</strong> key resources to key cases under E360
+                platform
+              </li>
+              <li className="text-sh-gray mb-3">
+                <strong className="text-blue-400">Cashflow visibility</strong> on invoices and receivables management
+              </li>
+            </ul>
+            <Button className="float-end" icon="arrow-right">
+              Learn More
+            </Button>
+          </div>
+        </div>
+      </HomeSection>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <h1 className={styles.title2}>Welcome to E360</h1>
         <p className={styles.description2}>
