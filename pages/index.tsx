@@ -1,8 +1,11 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
+import Image from "next/image";
 import { FC } from "react";
 import { Button, PageLayout } from "../components";
 import styles from "../styles/Home.module.scss";
+
+const imgPref = "/home";
 
 interface HomeSectionProps {
   className?: string | undefined;
@@ -22,7 +25,7 @@ interface FeatureCardProps {
   className?: string | undefined;
   titleClassName?: string | undefined;
   descClassName?: string | undefined;
-  cardImgSrc?: string;
+  cardImgSrc: string;
   cardTitle: string;
   cardDesc: string;
 }
@@ -39,9 +42,10 @@ const FeatureCard: FC<FeatureCardProps> = ({
     className={classNames(
       styles.featureCard,
       className,
-      "col-10 col-sm-8 col-md-4 col-lg-3 p-4 mx-3 my-4 d-flex flex-column align-items-center"
+      "col-10 col-sm-8 col-md-4 col-lg-3 p-4 pt-5 mx-3 my-4 d-flex flex-column align-items-center"
     )}
   >
+    <Image src={imgPref + cardImgSrc} width={150} height={150} alt="feature icon" />
     <h4 className={classNames(titleClassName || "text-sh-dark", "text-center")}>{cardTitle}</h4>
     <p className={classNames(descClassName || "text-sh-gray", "text-center")}>{cardDesc}</p>
   </div>
@@ -72,17 +76,20 @@ const Home: NextPage = () => {
       <HomeSection sectionTitle="features" sectionDesc="E360 provides a wide range of features and functions">
         <div className="row justify-content-evenly align-items-stretch">
           <FeatureCard
+            cardImgSrc="/feat-client-img.png"
             cardTitle="Client"
             titleClassName="text-cyan-500"
             cardDesc="Create and manage your clients. Record client information either as a person or a company to contact, send
               out invoices."
           />
           <FeatureCard
+            cardImgSrc="/feat-case-img.png"
             cardTitle="Case"
             titleClassName="text-indigo-400"
             cardDesc="Create and manage your client’s legal cases. Key-in your work as time entry and keep track of expenses under each case."
           />
           <FeatureCard
+            cardImgSrc="/feat-lawyer-img.png"
             cardTitle="Lawyer"
             titleClassName="text-pink-400"
             cardDesc="Create lawyer profiles with your team and manage all your lawyers in a single place. Assign different roles to each lawyer."
