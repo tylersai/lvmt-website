@@ -1,7 +1,22 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
+import { FC } from "react";
 import { Button, PageLayout } from "../components";
 import styles from "../styles/Home.module.scss";
+
+interface HomeSectionProps {
+  className?: string | undefined;
+  sectionTitle: string;
+  sectionDesc: string;
+}
+
+const HomeSection: FC<HomeSectionProps> = ({ className, children, sectionTitle, sectionDesc }) => (
+  <section className={classNames(className, "py-4 py-md-5")}>
+    <h1 className={classNames(styles.sectionTitle, "d-block text-center text-primary")}>{sectionTitle}</h1>
+    <p className={classNames(styles.sectionDesc, "d-block text-center text-sh-dark")}>{sectionDesc}</p>
+    {children}
+  </section>
+);
 
 const Home: NextPage = () => {
   return (
@@ -12,11 +27,11 @@ const Home: NextPage = () => {
           <img className={styles.illustration} src="/design-illustration.svg" alt="E360 Illustration" />
         </div>
         <div className="col-md-5 py-5 d-flex flex-column justify-content-center align-items-start">
-          <h1 className={classNames("text-primary", styles.title)}>
+          <h1 className={classNames("text-primary", styles.heroTitle)}>
             Case Management <br />
             made easier.
           </h1>
-          <p className={classNames("text-sh-gray", styles.desc)}>
+          <p className={classNames("text-sh-gray", styles.heroDesc)}>
             Introducing <strong>E360</strong>, a case management software system for faster productivity and better
             managed legal records for professional lawyers and law firms.
           </p>
@@ -25,6 +40,10 @@ const Home: NextPage = () => {
           </Button>
         </div>
       </section>
+      <HomeSection
+        sectionTitle="features"
+        sectionDesc="E360 provides a wide range of features and functions"
+      ></HomeSection>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <h1 className={styles.title2}>Welcome to E360</h1>
         <p className={styles.description2}>

@@ -1,10 +1,10 @@
-.title {
+.heroTitle {
   line-height: 58px;
   font-size: 48px;
   font-weight: 600;
 }
 
-.desc {
+.heroDesc {
   margin-top: 2rem;
   margin-bottom: 2.75rem;
   line-height: 32px;
@@ -16,6 +16,34 @@
   width: 88%;
   height: auto;
   object-fit: contain;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    z-index: 1;
+    bottom: -10px;
+    left: calc(50% - 18px);
+    height: 2px;
+    width: 36px;
+    background-color: var(--bs-primary);
+  }
+}
+
+.sectionDesc {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: 665px;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem;
 }
 
 .title2 {
