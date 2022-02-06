@@ -95,6 +95,9 @@ const Home: NextPage = () => {
             cardDesc="Create lawyer profiles with your team and manage all your lawyers in a single place. Assign different roles to each lawyer."
           />
         </div>
+        <p className={classNames(styles.featureQuote, "text-center text-sh-gray px-2 py-4 py-md-5 m-0")}>
+          Priorties change... but the challenges remain constant!
+        </p>
       </HomeSection>
       <section className="d-flex flex-column justify-content-center align-items-center">
         <h1 className={styles.title2}>Welcome to E360</h1>
