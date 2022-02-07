@@ -76,8 +76,14 @@
 }
 
 .ulPy {
-  padding-top: 130px;
+  padding-top: 24px;
   padding-bottom: 80px;
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .ulPy {
+    padding-top: 130px;
+  }
 }
 
 .vLine {
@@ -100,7 +106,14 @@
   }
 }
 
-.stepText {
+.topOffset1 {
   margin-top: 50px;
   margin-bottom: 22px;
+}
+
+.topOffset2 {
+  margin-top: 55px;
+}
+.topOffset2Wrapped {
+  margin-top: 42px;
 }

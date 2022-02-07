@@ -62,7 +62,7 @@ const FeatureBenefitBox: FC<{ imgSrc: string; text: string }> = ({ imgSrc, text 
 const Stepper: FC<Step> = ({ step, desc, items }) => (
   <div className="row justify-content-center">
     <div className="d-none d-md-block col-4 bg-white py-3">
-      <h3 className={classNames("text-sh-gray text-end text-uppercase", styles.stepText)}>Step</h3>
+      <h3 className={classNames("text-sh-gray text-end text-uppercase", styles.topOffset1)}>Step</h3>
       <h3 className="text-blue-300 text-end text-uppercase ps-5">{desc}</h3>
     </div>
     <div className="col-10 col-md-7 bg-white py-3">
@@ -79,6 +79,14 @@ const Stepper: FC<Step> = ({ step, desc, items }) => (
           <span className={styles.vLine} style={{ height: "6px" }} />
         </div>
         <div className="d-flex flex-column flex-grow-1">
+          <h4
+            className={classNames(
+              "text-blue-300 text-uppercase ps-4 pe-5 d-block d-md-none",
+              desc.length > 20 ? styles.topOffset2Wrapped : styles.topOffset2
+            )}
+          >
+            {desc}
+          </h4>
           <ul className={styles.ulPy}>
             {items.map((el, i) => (
               <li key={i} className="my-2 text-sh-gray">
