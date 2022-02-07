@@ -203,6 +203,30 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
         {steps && steps.map((el) => <Stepper key={el.step} {...el} />)}
       </HomeSection>
 
+      <HomeSection sectionTitle="reviews" sectionDesc="Hear what our customers are saying about E360">
+        <div className="row justify-content-center">
+          <div className="col-10 col-sm-9 col-md-8 col-lg-6">
+            <div className="d-flex justify-content-between align-items-end">
+              <i className={classNames("bi bi-arrow-left-circle text-primary mb-5", styles.arrowBtn)} role="button"></i>
+              <div className="d-flex flex-column align-items-center">
+                <div
+                  className={classNames("my-4 d-flex justify-content-center align-items-center", styles.reviewPhoto)}
+                >
+                  <Image src={imgPref + "/person.png"} width="160" height="160" alt="Person" />
+                </div>
+                <h5 className="text-primary my-3">John Doe</h5>
+                <span className="text-sh-gray fw-400">Executive Director</span>
+                <span className="text-sh-gray fw-400">ABC Co., Ltd.</span>
+              </div>
+              <i
+                className={classNames("bi bi-arrow-right-circle text-primary mb-5", styles.arrowBtn)}
+                role="button"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </HomeSection>
+
       <section className="d-flex flex-column justify-content-center align-items-center">
         <h1 className={styles.title2}>Welcome to E360</h1>
         <p className={styles.description2}>

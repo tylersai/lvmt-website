@@ -117,3 +117,13 @@
 .topOffset2Wrapped {
   margin-top: 42px;
 }
+
+.arrowBtn {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.reviewPhoto {
+  overflow: hidden;
+  border: 4px solid var(--bs-blue-300);
+  border-radius: 50%;
+}
