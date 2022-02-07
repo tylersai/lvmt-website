@@ -74,3 +74,33 @@
   font-size: 24px;
   font-weight: 400;
 }
+
+.ulPy {
+  padding-top: 130px;
+  padding-bottom: 80px;
+}
+
+.vLine {
+  background-color: var(--bs-blue-200);
+  width: 3px;
+}
+
+.stepCircle {
+  border: 3px solid var(--bs-blue-300);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  min-height: 70px;
+  max-width: 70px;
+  max-height: 70px;
+  & > span {
+    font-size: 36px;
+    font-weight: 400;
+  }
+}
+
+.stepText {
+  margin-top: 50px;
+  margin-bottom: 22px;
+}

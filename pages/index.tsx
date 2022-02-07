@@ -1,8 +1,9 @@
 import classNames from "classnames";
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { FC } from "react";
 import { Button, PageLayout } from "../components";
+import steps, { Step } from "../content/steps";
 import styles from "../styles/Home.module.scss";
 
 const imgPref = "/home";
@@ -58,7 +59,48 @@ const FeatureBenefitBox: FC<{ imgSrc: string; text: string }> = ({ imgSrc, text 
   </div>
 );
 
-const Home: NextPage = () => {
+const Stepper: FC<Step> = ({ step, desc, items }) => (
+  <div className="row justify-content-center">
+    <div className="col-4 bg-white py-3">
+      <h3 className={classNames("text-sh-gray text-end text-uppercase", styles.stepText)}>Step</h3>
+      <h3 className="text-blue-300 text-end text-uppercase ps-5">{desc}</h3>
+    </div>
+    <div className="col-7 bg-white py-3">
+      <div className="d-flex">
+        <div className="d-flex flex-column align-items-center align-self-stretch" style={{ gap: "8px" }}>
+          <span className={styles.vLine} style={{ height: "24px" }} />
+          <div className={classNames("d-flex justify-content-center align-items-center", styles.stepCircle)}>
+            <span className="text-sh-gray">{step}</span>
+          </div>
+          <span className={classNames("flex-grow-1", styles.vLine)} />
+          <span className={styles.vLine} style={{ height: "24px" }} />
+          <span className={styles.vLine} style={{ height: "6px" }} />
+          <span className={styles.vLine} style={{ height: "6px" }} />
+          <span className={styles.vLine} style={{ height: "6px" }} />
+        </div>
+        <div className="d-flex flex-column flex-grow-1">
+          <ul className={styles.ulPy}>
+            {items.map((el, i) => (
+              <li key={i} className="my-2 text-sh-gray">
+                {el}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const getStaticProps: GetStaticProps = () => {
+  return {
+    props: {
+      steps: steps,
+    },
+  };
+};
+
+const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
   return (
     <PageLayout>
       <section className="row flex-row-reverse justify-content-center align-items-stretch">
@@ -80,6 +122,7 @@ const Home: NextPage = () => {
           </Button>
         </div>
       </section>
+
       <HomeSection sectionTitle="features" sectionDesc="E360 provides a wide range of features and functions">
         <div className="row justify-content-evenly align-items-stretch">
           <FeatureCard
@@ -112,6 +155,7 @@ const Home: NextPage = () => {
           <FeatureBenefitBox imgSrc="/model-img.png" text="Driving Business Model Diversification" />
         </div>
       </HomeSection>
+
       <HomeSection
         sectionTitle="advantages"
         sectionDesc="E360 also serves as a pratice and invoice management platform"
@@ -146,6 +190,11 @@ const Home: NextPage = () => {
           </div>
         </div>
       </HomeSection>
+
+      <HomeSection sectionTitle="how it works" sectionDesc="It is fairly easy to get started with E360 platform">
+        {steps && steps.map((el) => <Stepper key={el.step} {...el} />)}
+      </HomeSection>
+
       <section className="d-flex flex-column justify-content-center align-items-center">
         <h1 className={styles.title2}>Welcome to E360</h1>
         <p className={styles.description2}>
