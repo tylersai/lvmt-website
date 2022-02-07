@@ -61,11 +61,11 @@ const FeatureBenefitBox: FC<{ imgSrc: string; text: string }> = ({ imgSrc, text 
 
 const Stepper: FC<Step> = ({ step, desc, items }) => (
   <div className="row justify-content-center">
-    <div className="col-4 bg-white py-3">
+    <div className="d-none d-md-block col-4 bg-white py-3">
       <h3 className={classNames("text-sh-gray text-end text-uppercase", styles.stepText)}>Step</h3>
       <h3 className="text-blue-300 text-end text-uppercase ps-5">{desc}</h3>
     </div>
-    <div className="col-7 bg-white py-3">
+    <div className="col-10 col-md-7 bg-white py-3">
       <div className="d-flex">
         <div className="d-flex flex-column align-items-center align-self-stretch" style={{ gap: "8px" }}>
           <span className={styles.vLine} style={{ height: "24px" }} />
