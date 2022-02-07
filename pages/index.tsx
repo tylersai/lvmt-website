@@ -223,11 +223,21 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
                 role="button"
               ></i>
             </div>
-            <p className="text-center fw-400 mt-5">
+            <div className="d-flex justify-content-center align-items-center mt-4">
+              {[...Array(5)].map((_, i) => (
+                <i key={i} className="bi bi-star-fill text-primary m-1"></i>
+              ))}
+            </div>
+            <p className="text-center fw-400 my-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.
             </p>
+            <div className="d-flex justify-content-center align-items-center my-2">
+              <span className={classNames(styles.indicator, styles.indicatorActive)} role="button" />
+              <span className={classNames(styles.indicator)} role="button" />
+              <span className={classNames(styles.indicator)} role="button" />
+            </div>
           </div>
         </div>
       </HomeSection>
