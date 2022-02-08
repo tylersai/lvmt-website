@@ -203,6 +203,18 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
         {steps && steps.map((el) => <Stepper key={el.step} {...el} />)}
       </HomeSection>
 
+      <HomeSection sectionTitle="pricing" sectionDesc="Try E360 free for 7 days and level up your daily productivity">
+        <div className="row justify-content-center pt-4">
+          <div className="col-11 col-sm-10 col-md-12 col-lg-10 py-5 bg-blue-600 d-flex flex-column align-items-center">
+            <p className="text-light">
+              We offer a wide range of pricing options for individual lawyers or law firm. Contact us for customized
+              options.
+            </p>
+            <p className="text-light fw-500">No Credit Card Required</p>
+          </div>
+        </div>
+      </HomeSection>
+
       <HomeSection sectionTitle="reviews" sectionDesc="Hear what our customers are saying about E360">
         <div className="row justify-content-center">
           <div className="col-10 col-sm-9 col-md-8 col-lg-6">
