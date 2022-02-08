@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useCallback, useState } from "react";
 import { Button, PageLayout } from "../components";
+import { SegmentedButton, SegmentedButtonHandler } from "../components/SegmentedButton";
 import steps, { Step } from "../content/steps";
 import styles from "../styles/Home.module.scss";
 
@@ -109,6 +110,15 @@ export const getStaticProps: GetStaticProps = () => {
 };
 
 const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
+  const [pricing, setPricing] = useState<string>("monthly");
+
+  const onPricingChange = useCallback<SegmentedButtonHandler>(
+    (data) => {
+      setPricing(data.value);
+    },
+    [setPricing]
+  );
+
   return (
     <PageLayout>
       <section className="row flex-row-reverse justify-content-center align-items-stretch">
@@ -211,6 +221,14 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
               options.
             </p>
             <p className="text-light fw-500">No Credit Card Required</p>
+            <SegmentedButton
+              options={[
+                { value: "annually", text: "Annually" },
+                { value: "monthly", text: "Monthly" },
+              ]}
+              data={{ value: pricing, text: pricing }}
+              onChange={onPricingChange}
+            />
           </div>
         </div>
       </HomeSection>
