@@ -216,11 +216,11 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
       <HomeSection sectionTitle="pricing" sectionDesc="Try E360 free for 7 days and level up your daily productivity">
         <div className="row justify-content-center pt-4">
           <div className="col-11 col-sm-10 col-md-12 col-lg-10 py-5 bg-blue-600 d-flex flex-column align-items-center">
-            <p className="text-light">
+            <p className={classNames(styles.pricingDesc, "text-light text-center px-3")}>
               We offer a wide range of pricing options for individual lawyers or law firm. Contact us for customized
               options.
             </p>
-            <p className="text-light fw-500">No Credit Card Required</p>
+            <p className="text-light text-center fw-500">No Credit Card Required</p>
             <SegmentedButton
               options={[
                 { value: "annually", text: "Annually" },
