@@ -9,7 +9,7 @@ export const Navbar: FC = () => {
   return (
     <header className={classNames(styles.Navbar, "d-flex align-items-center justify-content-between")}>
       <div className={classNames(styles.logoWrapper, "d-flex align-items-center")}>
-        <Image src="/logo@128x128.png" alt="Logo" role="img" width={52} height={52} />
+        <Image src="/logo@414x414.png" alt="Logo" role="img" width={52} height={52} />
         <h1 className={classNames(styles.brand, "mb-0 text-primary")}>E360</h1>
       </div>
       <ul className={classNames(styles.menuWrapper, "mb-0 d-flex align-items-center")}>
