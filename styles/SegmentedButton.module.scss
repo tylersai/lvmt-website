@@ -1,0 +1,18 @@
+.SegmentedButton {
+  gap: 4px;
+  border-radius: 23px;
+}
+.button {
+  color: var(--sh-gray-light);
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 19px;
+  padding: 8px 16px;
+  transition: var(--transition);
+}
+.buttonActive {
+  color: var(--bs-primary);
+  background-color: var(--bs-light);
+}
