@@ -2,7 +2,7 @@ import classNames from "classnames";
 import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { FC, useCallback, useState } from "react";
-import { Button, PageLayout, PricingCard } from "../components";
+import { Button, PageLayout, PriceModel, PricingCard } from "../components";
 import { SegmentedButton, SegmentedButtonHandler } from "../components/SegmentedButton";
 import steps, { Step } from "../content/steps";
 import styles from "../styles/Home.module.scss";
@@ -110,11 +110,11 @@ export const getStaticProps: GetStaticProps = () => {
 };
 
 const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
-  const [pricing, setPricing] = useState<string>("monthly");
+  const [pricing, setPricing] = useState<PriceModel>("monthly");
 
   const onPricingChange = useCallback<SegmentedButtonHandler>(
     (data) => {
-      setPricing(data.value);
+      setPricing(data.value as PriceModel);
     },
     [setPricing]
   );
@@ -237,7 +237,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
               cardTitle="Individual"
               cardDesc="For a single lawyer"
               price={{ monthly: 18, annually: 18 * 12 }}
-              priceModel="monthly"
+              priceModel={pricing}
               link={{ href: "/signup", text: "Start Free Trial" }}
               benefits={["Record daily time entry", "Manage clients and cases", "Invoice generation"]}
             />
@@ -247,7 +247,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
               cardTitle="Team"
               cardDesc="For a law firm with multiple lawyers"
               price={{ monthly: 38, annually: 38 * 12 }}
-              priceModel="monthly"
+              priceModel={pricing}
               link={{ href: "/signup", text: "Get Started" }}
               benefits={[
                 "All benefits from Individual Plan +",
@@ -264,7 +264,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
               cardTitle="Enterprise"
               cardDesc="Need more customizations?"
               price={{ monthly: "$$", annually: "$$" }}
-              priceModel="monthly"
+              priceModel={pricing}
               link={{ href: "/signup", text: "Contact Sales" }}
               benefits={["TEAM benefits plus more", "Full customer support", "High-speed servers"]}
             />

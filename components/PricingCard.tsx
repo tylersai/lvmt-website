@@ -3,11 +3,13 @@ import Link from "next/link";
 import { FC } from "react";
 import styles from "../styles/PricingCard.module.scss";
 
+export type PriceModel = "annually" | "monthly";
+
 interface PricingCardProps {
   cardTitle: string;
   cardDesc: string;
   price: { annually: number | string; monthly: number | string };
-  priceModel?: "annually" | "monthly";
+  priceModel?: PriceModel;
   link: { href: string; text: string };
   benefits: string[];
   className?: string | undefined;
