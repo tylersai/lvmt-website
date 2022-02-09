@@ -232,7 +232,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
           </div>
         </div>
         <div className="row justify-content-center align-items-start g-0">
-          <div className="col-4 col-lg-3">
+          <div className="col-11 col-sm-10 col-md-4 col-lg-3 mb-4">
             <PricingCard
               cardTitle="Individual"
               cardDesc="For a single lawyer"
@@ -242,7 +242,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
               benefits={["Record daily time entry", "Manage clients and cases", "Invoice generation"]}
             />
           </div>
-          <div className="col-4 col-lg-3">
+          <div className="col-11 col-sm-10 col-md-4 col-lg-3 mb-4">
             <PricingCard
               cardTitle="Team"
               cardDesc="For a law firm with multiple lawyers"
@@ -259,7 +259,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
               active
             />
           </div>
-          <div className="col-4 col-lg-3">
+          <div className="col-11 col-sm-10 col-md-4 col-lg-3 mb-4">
             <PricingCard
               cardTitle="Enterprise"
               cardDesc="Need more customizations?"
