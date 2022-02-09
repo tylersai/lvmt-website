@@ -2,7 +2,7 @@ import classNames from "classnames";
 import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { FC, useCallback, useState } from "react";
-import { Button, PageLayout } from "../components";
+import { Button, PageLayout, PricingCard } from "../components";
 import { SegmentedButton, SegmentedButtonHandler } from "../components/SegmentedButton";
 import steps, { Step } from "../content/steps";
 import styles from "../styles/Home.module.scss";
@@ -228,6 +228,45 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
               ]}
               data={{ value: pricing, text: pricing }}
               onChange={onPricingChange}
+            />
+          </div>
+        </div>
+        <div className="row justify-content-center align-items-start g-0">
+          <div className="col-4 col-lg-3">
+            <PricingCard
+              cardTitle="Individual"
+              cardDesc="For a single lawyer"
+              price={{ monthly: 18, annually: 18 * 12 }}
+              priceModel="monthly"
+              link={{ href: "/signup", text: "Start Free Trial" }}
+              benefits={["Record daily time entry", "Manage clients and cases", "Invoice generation"]}
+            />
+          </div>
+          <div className="col-4 col-lg-3">
+            <PricingCard
+              cardTitle="Team"
+              cardDesc="For a law firm with multiple lawyers"
+              price={{ monthly: 38, annually: 38 * 12 }}
+              priceModel="monthly"
+              link={{ href: "/signup", text: "Get Started" }}
+              benefits={[
+                "All benefits from Individual Plan +",
+                "Up to 3 lawyers",
+                "Live chat with client",
+                "Staff/Lawyer management",
+                "Manager, lawyer and secretary access",
+              ]}
+              active
+            />
+          </div>
+          <div className="col-4 col-lg-3">
+            <PricingCard
+              cardTitle="Enterprise"
+              cardDesc="Need more customizations?"
+              price={{ monthly: "$$", annually: "$$" }}
+              priceModel="monthly"
+              link={{ href: "/signup", text: "Contact Sales" }}
+              benefits={["TEAM benefits plus more", "Full customer support", "High-speed servers"]}
             />
           </div>
         </div>
