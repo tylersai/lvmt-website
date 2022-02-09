@@ -32,12 +32,24 @@
 .active {
   background-color: #fff !important;
   box-shadow: 1px 4px 24px 2px rgba(0, 0, 0, 0.06) !important;
-  z-index: 2;
+  position: relative;
+  padding-top: 0 !important;
   & > a {
     color: var(--bs-light) !important;
     background-color: var(--bs-primary) !important;
   }
   & li {
     color: var(--bs-blue-300);
+  }
+  &::before {
+    content: "";
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: -28px;
+    height: 28px;
   }
 }
