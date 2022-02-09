@@ -4,3 +4,5 @@ export * from "./Navbar";
 export * from "./Button";
 export * from "./Footer";
 export * from "./IconLink";
+export * from "./SegmentedButton";
+export * from "./PricingCard";
