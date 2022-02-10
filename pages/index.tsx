@@ -124,7 +124,11 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
       <section className="row flex-row-reverse justify-content-center align-items-stretch">
         <div className="col-md-5 py-5 d-flex flex-column justify-content-center align-items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className={styles.illustration} src="/design-illustration.svg" alt="E360 Illustration" />
+          <img
+            className={classNames("mt-5 mt-md-0 mx-4 mx-sm-5 mx-md-0", styles.illustration)}
+            src="/design-illustration.svg"
+            alt="E360 Illustration"
+          />
         </div>
         <div className="col-md-5 py-5 d-flex flex-column justify-content-center align-items-start">
           <h1 className={classNames("text-primary", styles.heroTitle)}>
