@@ -1,19 +1,33 @@
-.Navbar {
-  padding: 0 52px;
+.Navbar-general {
   position: absolute;
   z-index: 2;
   width: 100%;
   top: 0;
 }
 
+.Navbar {
+  @extend .Navbar-general;
+  padding: 0 52px;
+  & h1 {
+    font-weight: 600;
+    font-size: 28px;
+  }
+}
+
+.NavbarMobile {
+  @extend .Navbar-general;
+  padding-top: 4vw;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  & h1 {
+    font-weight: 600;
+    font-size: 24px;
+  }
+}
+
 .logoWrapper {
   padding: 42px 16px;
   gap: 24px;
-}
-
-.brand {
-  font-weight: 600;
-  font-size: 28px;
 }
 
 .menuWrapper {
