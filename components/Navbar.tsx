@@ -48,7 +48,7 @@ export const Navbar: FC = () => {
           <Image src="/logo@414x414.png" alt="Logo" role="img" width={42} height={42} />
           <h1 className="mb-0 ms-3 text-primary">E360</h1>
         </div>
-        <button>
+        <button className={styles.menuButton}>
           <i className="bi bi-list"></i>
         </button>
       </header>
