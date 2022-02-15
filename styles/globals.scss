@@ -74,3 +74,28 @@ b {
 .PageLayout > main > section:nth-child(even) {
   background-color: #fafafa;
 }
+
+.fadeIn {
+  animation: fadeIn 250ms ease-out forwards;
+}
+.fadeOut {
+  animation: fadeOut 250ms ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
