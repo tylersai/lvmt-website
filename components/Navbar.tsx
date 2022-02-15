@@ -5,6 +5,34 @@ import styles from "../styles/Navbar.module.scss";
 import Link from "next/link";
 import { Button } from ".";
 
+export interface Menu {
+  href: string;
+  text: string;
+}
+
+export const menus: Menu[] = [
+  {
+    href: "#how-it-works",
+    text: "Get Started",
+  },
+  {
+    href: "#features",
+    text: "Features",
+  },
+  {
+    href: "#pricing",
+    text: "Pricing",
+  },
+  {
+    href: "/about",
+    text: "About",
+  },
+  {
+    href: "/contact",
+    text: "Contact",
+  },
+];
+
 export const Navbar: FC = () => {
   return (
     <>
@@ -14,26 +42,13 @@ export const Navbar: FC = () => {
           <h1 className="mb-0 text-primary">E360</h1>
         </div>
         <ul className={classNames(styles.menuWrapper, "mb-0 d-flex align-items-center")}>
-          <li>
-            <Link href="/">
-              <a className={styles.navLink}>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/pricing">
-              <a className={styles.navLink}>Pricing</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/about">
-              <a className={styles.navLink}>About</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact">
-              <a className={styles.navLink}>Contact</a>
-            </Link>
-          </li>
+          {menus.map((el, i) => (
+            <li key={i}>
+              <Link href={el.href}>
+                <a className={styles.navLink}>{el.text}</a>
+              </Link>
+            </li>
+          ))}
           <li>
             <Button component="a" href="/login">
               Login
@@ -49,7 +64,7 @@ export const Navbar: FC = () => {
           <h1 className="mb-0 ms-3 text-primary">E360</h1>
         </div>
         <button className={styles.menuButton}>
-          <i className="bi bi-list"></i>
+          <i className="bi bi-filter"></i>
         </button>
       </header>
     </>

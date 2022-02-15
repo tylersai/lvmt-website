@@ -10,13 +10,14 @@ import styles from "../styles/Home.module.scss";
 const imgPref = "/home";
 
 interface HomeSectionProps {
+  id?: string | undefined;
   className?: string | undefined;
   sectionTitle: string;
   sectionDesc: string;
 }
 
-const HomeSection: FC<HomeSectionProps> = ({ className, children, sectionTitle, sectionDesc }) => (
-  <section className={classNames(className, "py-4 py-md-5")}>
+const HomeSection: FC<HomeSectionProps> = ({ id, className, children, sectionTitle, sectionDesc }) => (
+  <section id={id} className={classNames(className, "py-4 py-md-5")}>
     <h3 className={classNames(styles.sectionTitle, "d-block text-center text-primary")}>{sectionTitle}</h3>
     <p className={classNames(styles.sectionDesc, "d-block text-center text-sh-dark")}>{sectionDesc}</p>
     {children}
@@ -145,7 +146,11 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
         </div>
       </section>
 
-      <HomeSection sectionTitle="features" sectionDesc="E360 provides a wide range of features and functions">
+      <HomeSection
+        id="features"
+        sectionTitle="features"
+        sectionDesc="E360 provides a wide range of features and functions"
+      >
         <div className="row justify-content-evenly align-items-stretch">
           <FeatureCard
             cardImgSrc="/feat-client-img.png"
@@ -213,11 +218,19 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
         </div>
       </HomeSection>
 
-      <HomeSection sectionTitle="how it works" sectionDesc="It is fairly easy to get started with E360 platform">
+      <HomeSection
+        id="how-it-works"
+        sectionTitle="how it works"
+        sectionDesc="It is fairly easy to get started with E360 platform"
+      >
         {steps && steps.map((el) => <Stepper key={el.step} {...el} />)}
       </HomeSection>
 
-      <HomeSection sectionTitle="pricing" sectionDesc="Try E360 free for 7 days and level up your daily productivity">
+      <HomeSection
+        id="pricing"
+        sectionTitle="pricing"
+        sectionDesc="Try E360 free for 7 days and level up your daily productivity"
+      >
         <div className="row justify-content-center pt-4">
           <div className="col-11 col-sm-10 col-md-12 col-lg-10 py-5 bg-blue-600 d-flex flex-column align-items-center">
             <p className={classNames(styles.pricingDesc, "text-light text-center px-3")}>
