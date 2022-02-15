@@ -185,7 +185,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
         <div className="row justify-content-evenly">
           <div className="col-md-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="img-fluid" src={imgPref + "/e360-circle.png"} alt="E360 Platform" />
+            <img className="img-fluid" src={imgPref + "/e360-circle-thin.webp"} alt="E360 Platform" />
           </div>
           <div className="col-md-4 px-2 pt-4 pt-lg-5">
             <h5>Practice Management Cloud Advantages</h5>
