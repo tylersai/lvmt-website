@@ -2,10 +2,9 @@ import classNames from "classnames";
 import type { GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import { FC, useCallback, useState } from "react";
-import { Button, PageLayout, PriceModel, PricingCard } from "../components";
-import { SegmentedButton, SegmentedButtonHandler } from "../components/SegmentedButton";
+import { Button, PageLayout, PriceModel, PricingCard, SegmentedButton, SegmentedButtonHandler } from "@components";
 import steps, { Step } from "../content/steps";
-import styles from "../styles/Home.module.scss";
+import styles from "@styles/Home.module.scss";
 
 const imgPref = "/home";
 
