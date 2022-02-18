@@ -4,9 +4,10 @@ import React, { Fragment } from "react";
 import { IconLink } from ".";
 import styles from "../styles/Footer.module.scss";
 
-interface LinkGroupProps {
+export type LinkType = { text: string; href?: string | undefined };
+export interface LinkGroupProps {
   heading: string;
-  links: Array<{ text: string; href?: string }>;
+  links: Array<LinkType>;
 }
 
 const companyLinks: LinkGroupProps = {
@@ -29,7 +30,7 @@ const resourcesLinks: LinkGroupProps = {
 const addressLinks: LinkGroupProps = {
   heading: "address",
   links: [
-    { text: "160 Robinson Rd #13-02 \nSingapore \n068914" },
+    { text: "160 Robinson Rd #13-02 \nSingapore \n068914", href: "" },
     { text: "info@lvmt.co", href: "mailto:info@lvmt.co" },
   ],
 };
