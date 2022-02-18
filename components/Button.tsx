@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React, { FC } from "react";
-import styles from "../styles/Button.module.scss";
+import styles from "@styles/Button.module.scss";
 
 type ButtonColor = "primary" | "default" | "secondary";
 type ButtonComponent = "button" | "a";
