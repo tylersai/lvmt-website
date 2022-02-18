@@ -64,9 +64,11 @@ b {
 
 .PageLayout > main {
   min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 .PageLayout > main > section {
   min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 .PageLayout > main > section:nth-child(odd) {
   background-color: #fff;
