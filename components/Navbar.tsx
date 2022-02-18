@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { FC, MouseEventHandler, useEffect, useState } from "react";
 import classNames from "classnames";
-import styles from "../styles/Navbar.module.scss";
+import styles from "@styles/Navbar.module.scss";
 import Link from "next/link";
-import { Button } from ".";
+import { NextLinkButton } from ".";
 
 export interface Menu {
   href: string;
@@ -74,9 +74,7 @@ export const Navbar: FC = () => {
             </li>
           ))}
           <li>
-            <Button component="a" href="/login">
-              Login
-            </Button>
+            <NextLinkButton href="/login">Login</NextLinkButton>
           </li>
         </ul>
       </header>
@@ -113,6 +111,13 @@ export const Navbar: FC = () => {
                 </Link>
               </li>
             ))}
+            <li className="my-2">
+              <Link href="/login">
+                <a className={styles.navLinkMobile}>
+                  Login <i className="bi bi-arrow-right"></i>
+                </a>
+              </Link>
+            </li>
           </ul>
         </div>
       </header>
