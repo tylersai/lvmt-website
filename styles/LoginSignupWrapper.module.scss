@@ -1,0 +1,16 @@
+.closeBtn {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  & > i {
+    line-height: 1;
+  }
+}
+
+.desc {
+  font-size: 12px;
+}
+
+.footer {
+  font-size: 11px;
+}

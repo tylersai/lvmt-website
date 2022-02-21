@@ -7,3 +7,4 @@ export * from "./Footer";
 export * from "./IconLink";
 export * from "./SegmentedButton";
 export * from "./PricingCard";
+export * from "./LoginSignupWrapper";
