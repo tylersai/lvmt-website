@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FC } from "react";
 import styles from "@styles/LoginSignupWrapper.module.scss";
 import { useRouter } from "next/router";
+import { NextLinkButton } from "./NextLinkButton";
 
 interface LoginSignupWrapperProps {
   className?: string | undefined;
@@ -15,7 +16,7 @@ export const LoginSignupWrapper: FC<LoginSignupWrapperProps> = ({ className, for
   const router = useRouter();
   return (
     <section className={classNames("row justify-content-center align-items-stretch", className)}>
-      <div className="col-12 col-md-6 pt-5 pb-4">
+      <div className="col-12 col-lg-6 pt-5 pb-4">
         <div className="row justify-content-center h-100">
           <div className="col-10 col-md-9 d-flex flex-column justify-content-between align-items-stretch">
             <div>
@@ -38,11 +39,44 @@ export const LoginSignupWrapper: FC<LoginSignupWrapperProps> = ({ className, for
               </div>
               <h3 className="text-capitalize mt-4 mb-1">{formType}</h3>
               <p className={classNames(styles.desc, "text-sh-gray")}>{desc}</p>
-              <p className="fs-14">
+              <p className="fs-14 mb-2 mt-4">
                 <span className="text-capitalize">{formType}</span> with:
               </p>
-              <div className="d-flex align-items-center"></div>
-              <div className="d-flex align-items-center px-3">
+              <div className={classNames(styles.g25rem, "d-flex align-items-center")}>
+                <NextLinkButton
+                  href="#"
+                  icon="bi bi-google"
+                  iconPlacement="left"
+                  className={classNames(styles.socialBtn, "bg-transparent text-primary")}
+                >
+                  <span className="d-none d-sm-inline fw-500">Google</span>
+                </NextLinkButton>
+                <NextLinkButton
+                  href="#"
+                  icon="bi bi-apple"
+                  iconPlacement="left"
+                  className={classNames(styles.socialBtn, "bg-transparent text-primary")}
+                >
+                  <span className="d-none d-sm-inline">Apple</span>
+                </NextLinkButton>
+                <NextLinkButton
+                  href="#"
+                  icon="bi bi-facebook"
+                  iconPlacement="left"
+                  className={classNames(styles.socialBtn, "bg-transparent text-primary")}
+                >
+                  <span className="d-none d-sm-inline">Facebook</span>
+                </NextLinkButton>
+                <NextLinkButton
+                  href="#"
+                  icon="bi bi-twitter"
+                  iconPlacement="left"
+                  className={classNames(styles.socialBtn, "bg-transparent text-primary")}
+                >
+                  <span className="d-none d-sm-inline">Twitter</span>
+                </NextLinkButton>
+              </div>
+              <div className="d-flex align-items-center p-3">
                 <hr className="flex-grow-1" />
                 <span className="text-sh-gray fs-12 fw-300 mx-3">or {formType} with email</span>
                 <hr className="flex-grow-1" />
@@ -55,7 +89,7 @@ export const LoginSignupWrapper: FC<LoginSignupWrapperProps> = ({ className, for
           </div>
         </div>
       </div>
-      <div className="col-md-6 d-none d-md-flex flex-column justify-content-center align-items-center bg-primary"></div>
+      <div className="col-lg-6 d-none d-lg-flex flex-column justify-content-center align-items-center bg-primary"></div>
     </section>
   );
 };
