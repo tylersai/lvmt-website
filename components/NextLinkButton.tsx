@@ -23,11 +23,11 @@ export const NextLinkButton: FC<NextLinkButtonProps> = ({
   children,
 }) => (
   <Link href={href}>
-    <a className={classNames("d-inline-flex align-items-center", styles[`Button_${color}`], className)}>
+    <a className={classNames("d-inline-flex align-items-center", styles[`Button_${color}`], styles.g25rem, className)}>
       <>
-        {icon && iconPlacement == "left" && <i className={`bi bi-${icon} me-2`}></i>}
-        <span>{children}</span>
-        {icon && iconPlacement == "right" && <i className={`bi bi-${icon} ms-2`}></i>}
+        {icon && iconPlacement == "left" && <i className={`bi bi-${icon}`}></i>}
+        {children}
+        {icon && iconPlacement == "right" && <i className={`bi bi-${icon}`}></i>}
       </>
     </a>
   </Link>
