@@ -18,8 +18,9 @@ const LoginPage: NextPage = () => {
         <div className="row justify-content-center">
           <div className="col-10 col-sm-9 col-md-8">
             <form onSubmit={goLogin}>
-              <InputGroup className="pb-4" label="Email" placeholder="johndoe@example.com" required />
+              <InputGroup className="pb-4" label="Email" placeholder="johndoe@example.com" name="email" required />
               <InputGroup
+                name="password"
                 className="pb-4"
                 label="Password"
                 placeholder="min. 8 characters"
@@ -28,7 +29,7 @@ const LoginPage: NextPage = () => {
               />
               <div className="d-flex align-items-center justify-content-between pb-4 px-1">
                 <div className="d-flex align-items-center">
-                  <input id="RmbrMe" type="checkbox" />
+                  <input name="rememberMe" id="RmbrMe" type="checkbox" />
                   <label htmlFor="RmbrMe" className="ms-2 fs-12 fw-500">
                     Remember me
                   </label>

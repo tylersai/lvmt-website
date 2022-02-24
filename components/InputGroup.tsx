@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { ChangeEventHandler, CSSProperties, FC, HTMLInputTypeAttribute, useMemo } from "react";
 import styles from "@styles/InputGroup.module.scss";
 interface InputGroupProps {
+  name?: string | undefined;
   className?: string | undefined;
   label?: string | undefined;
   placeholder?: string | undefined;
@@ -14,6 +15,7 @@ interface InputGroupProps {
 }
 
 export const InputGroup: FC<InputGroupProps> = ({
+  name,
   className,
   label,
   placeholder,
@@ -35,6 +37,7 @@ export const InputGroup: FC<InputGroupProps> = ({
         </label>
       )}
       <input
+        name={name}
         id={randStr}
         type={inputType}
         value={value}
