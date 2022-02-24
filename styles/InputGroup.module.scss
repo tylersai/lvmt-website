@@ -14,10 +14,14 @@
     font-size: 14px;
     color: var(--sh-gray-dark);
   }
+  & > input[type="password"] {
+    letter-spacing: 4px;
+  }
   & > input:focus {
     border-color: var(--bs-blue-200);
   }
   & > input::placeholder {
     opacity: 0.5;
+    letter-spacing: normal;
   }
 }

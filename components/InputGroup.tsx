@@ -1,9 +1,6 @@
 import classNames from "classnames";
 import { ChangeEventHandler, CSSProperties, FC, HTMLInputTypeAttribute, useMemo } from "react";
 import styles from "@styles/InputGroup.module.scss";
-
-const getRandStr = (): string => `input_id_${Math.random().toString().substring(2, 6)}`;
-
 interface InputGroupProps {
   className?: string | undefined;
   label?: string | undefined;
@@ -27,7 +24,7 @@ export const InputGroup: FC<InputGroupProps> = ({
   required,
   disabled,
 }) => {
-  const randStr = useMemo(() => getRandStr(), []);
+  const randStr = useMemo(() => `input_id_${Math.random().toString().substring(2, 6)}`, []);
 
   return (
     <div className={classNames("d-flex flex-column align-items-stretch", styles.InputGroup, className)} style={style}>
