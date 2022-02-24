@@ -1,0 +1,23 @@
+.InputGroup {
+  gap: 6px;
+  & > label {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  & > input {
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--sh-gray-light);
+    border-radius: 8px;
+    transition: all 120ms ease-out;
+    padding: 6px 14px;
+    font-size: 14px;
+    color: var(--sh-gray-dark);
+  }
+  & > input:focus {
+    border-color: var(--bs-blue-200);
+  }
+  & > input::placeholder {
+    opacity: 0.5;
+  }
+}

@@ -8,3 +8,4 @@ export * from "./IconLink";
 export * from "./SegmentedButton";
 export * from "./PricingCard";
 export * from "./LoginSignupWrapper";
+export * from "./InputGroup";
