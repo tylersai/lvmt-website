@@ -2,19 +2,18 @@ import classNames from "classnames";
 import type { NextPage } from "next";
 import { FC, FormEventHandler, useCallback, useState } from "react";
 import { CommonHead, InputGroup, LoginSignupWrapper, PageLayout } from "@components";
-import styles from "@styles/LoginPage.module.scss";
 import btnStyles from "@styles/Button.module.scss";
 import Link from "next/link";
 
-const LoginPage: NextPage = () => {
+const SignupPage: NextPage = () => {
   const goLogin: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    alert("Logging in...");
+    alert("Signing up...");
   };
 
   return (
-    <PageLayout hideHeader hideFooter CommonHeadComp={<CommonHead title={"E360 \u2022 Login"} />}>
-      <LoginSignupWrapper formType="login" desc="See your profile, purchases and payment info.">
+    <PageLayout hideHeader hideFooter CommonHeadComp={<CommonHead title={"E360 \u2022 Signup"} />}>
+      <LoginSignupWrapper formType="signup" desc="Join our E360 today for faster productivity.">
         <div className="row justify-content-center">
           <div className="col-10 col-sm-9 col-md-8">
             <form onSubmit={goLogin}>
@@ -26,26 +25,22 @@ const LoginPage: NextPage = () => {
                 inputType="password"
                 required
               />
-              <div className="d-flex align-items-center justify-content-between pb-4 px-1">
-                <div className="d-flex align-items-center">
-                  <input id="RmbrMe" type="checkbox" />
-                  <label htmlFor="RmbrMe" className="ms-2 fs-12 fw-500">
-                    Remember me
-                  </label>
-                </div>
-                <span className="text-primary fs-12 fw-500" role="button">
-                  Forget password?
-                </span>
-              </div>
+              <InputGroup
+                className="pb-4"
+                label="Confirm Password"
+                placeholder="min. 8 characters"
+                inputType="password"
+                required
+              />
               <input
                 className={classNames(btnStyles.Button_primary, "text-center d-block w-100")}
                 type="submit"
-                value="Login"
+                value="Create Account"
               />
               <p className="mt-3 mb-0 px-1 fs-13">
-                Not registered yet?&nbsp;&nbsp;&nbsp;
-                <Link href="/signup">
-                  <a className="fw-500 text-decoration-none">Create an Account</a>
+                Already have an account?&nbsp;&nbsp;&nbsp;
+                <Link href="/login">
+                  <a className="fw-500 text-decoration-none">Login</a>
                 </Link>
               </p>
             </form>
@@ -56,4 +51,4 @@ const LoginPage: NextPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;
