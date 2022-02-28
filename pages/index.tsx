@@ -122,7 +122,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
   return (
     <PageLayout>
       <section className="row flex-row-reverse justify-content-center align-items-stretch">
-        <div className="col-md-5 py-5 d-flex flex-column justify-content-center align-items-center">
+        <div className="col-11 col-sm-8 col-md-5 py-5 d-flex flex-column justify-content-center align-items-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className={classNames("mt-5 mt-md-0 mx-4 mx-sm-5 mx-md-0", styles.illustration)}
@@ -130,7 +130,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
             alt="E360 Illustration"
           />
         </div>
-        <div className="col-md-5 py-5 d-flex flex-column justify-content-center align-items-start">
+        <div className="col-11 col-sm-8 col-md-5 pb-5 pt-md-5 d-flex flex-column justify-content-center align-items-start">
           <h1 className={classNames("text-primary", styles.heroTitle)}>
             Case Management <br />
             made easier.
