@@ -42,6 +42,9 @@ export const Navbar: FC = () => {
     } else {
       document.body.style.position = "initial";
     }
+    return () => {
+      document.body.style.position = "initial";
+    };
   }, [openMenu]);
 
   const fadeOutBeforeClose: MouseEventHandler<HTMLButtonElement> = () => {

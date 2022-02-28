@@ -174,7 +174,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
         <p className={classNames(styles.featureQuote, "text-center text-sh-gray px-2 py-4 py-md-5 m-0")}>
           Priorties change... but the challenges remain constant!
         </p>
-        <div className="row justify-content-evenly">
+        <div className="row justify-content-center justify-content-lg-evenly">
           <FeatureBenefitBox imgSrc="/planning-img.png" text="Planning for an Uncertain Future" />
           <FeatureBenefitBox imgSrc="/profit-img.png" text="Increasing Project Profitability" />
           <FeatureBenefitBox imgSrc="/expectation-img.png" text="Delivering beyond Client Expectations" />
