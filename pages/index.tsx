@@ -187,11 +187,11 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
         sectionDesc="E360 also serves as a pratice and invoice management platform"
       >
         <div className="row justify-content-evenly">
-          <div className="col-md-6">
+          <div className="col-md-10 col-lg-6">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="img-fluid" src={imgPref + "/e360-circle-thin.webp"} alt="E360 Platform" />
           </div>
-          <div className="col-md-4 px-2 pt-4 pt-lg-5">
+          <div className="col-11 col-sm-9 col-lg-4 px-2 pt-4 pt-lg-5">
             <h5>Practice Management Cloud Advantages</h5>
             <ul className="my-4">
               <li className="text-sh-gray mb-3">
@@ -210,7 +210,7 @@ const Home: NextPage<{ steps: Step[] }> = ({ steps }) => {
                 <strong className="text-blue-400">Cashflow visibility</strong> on invoices and receivables management
               </li>
             </ul>
-            <Button className="float-end" icon="arrow-right">
+            <Button className="float-end mb-4" icon="arrow-right">
               Learn More
             </Button>
           </div>
