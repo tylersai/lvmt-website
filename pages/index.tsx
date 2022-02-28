@@ -66,7 +66,7 @@ const Stepper: FC<Step> = ({ step, desc, items }) => (
       <h3 className={classNames("text-sh-gray text-end text-uppercase", styles.topOffset1)}>Step</h3>
       <h3 className="text-blue-300 text-end text-uppercase ps-5">{desc}</h3>
     </div>
-    <div className="col-10 col-md-7 bg-white py-3">
+    <div className="col-11 col-sm-10 col-md-7 bg-white py-3">
       <div className="d-flex">
         <div className="d-flex flex-column align-items-center align-self-stretch" style={{ gap: "8px" }}>
           <span className={styles.vLine} style={{ height: "24px" }} />
@@ -82,7 +82,7 @@ const Stepper: FC<Step> = ({ step, desc, items }) => (
         <div className="d-flex flex-column flex-grow-1">
           <h4
             className={classNames(
-              "text-blue-300 text-uppercase ps-4 pe-5 d-block d-md-none",
+              "text-blue-300 text-uppercase ps-4 pe-4 pe-sm-5 d-block d-md-none",
               desc.length > 20 ? styles.topOffset2Wrapped : styles.topOffset2
             )}
           >
