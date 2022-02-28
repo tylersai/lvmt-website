@@ -8,6 +8,10 @@
 .Navbar {
   @extend .Navbar-general;
   padding: 0 52px;
+  & img.logo {
+    width: 52px;
+    height: 52px;
+  }
   & h1 {
     font-weight: 600;
     font-size: 28px;
@@ -19,6 +23,10 @@
   padding-top: 4vw;
   padding-left: 6vw;
   padding-right: 6vw;
+  & img.logo {
+    width: 42px;
+    height: 42px;
+  }
   & h1 {
     font-weight: 600;
     font-size: 24px;

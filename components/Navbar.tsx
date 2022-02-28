@@ -64,7 +64,8 @@ export const Navbar: FC = () => {
       <header className={classNames(styles.Navbar, "d-none d-lg-flex align-items-center justify-content-between")}>
         <Link href="/">
           <a className={classNames(styles.logoWrapper, "d-flex align-items-center text-decoration-none")}>
-            <Image src="/logo@414x414.png" alt="Logo" role="img" width={52} height={52} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="logo" src="/logo@414x414.png" alt="Logo" role="img" width={52} height={52} />
             <h1 className="mb-0 text-primary">E360</h1>
           </a>
         </Link>
@@ -86,7 +87,8 @@ export const Navbar: FC = () => {
       >
         <Link href="/">
           <a className="d-flex align-items-center text-decoration-none">
-            <Image src="/logo@414x414.png" alt="Logo" role="img" width={42} height={42} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="logo" src="/logo@414x414.png" alt="Logo" role="img" width={42} height={42} />
             <h1 className="mb-0 ms-3 text-primary">E360</h1>
           </a>
         </Link>
