@@ -48,6 +48,29 @@
   }
 }
 
+.buttonWrapper {
+  gap: 24px;
+  & > button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+  }
+}
+
+.iconBtn {
+  border-radius: 50%;
+  border: 2px solid var(--sh-gray-lighter);
+}
+
+.profileBtn {
+  border-radius: 15px;
+  border: 2px solid var(--bs-blue-300);
+  // background-image: url("/profile.png");
+  background-size: contain;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+}
+
 .navLink,
 .navLink:visited {
   font-size: 16px;

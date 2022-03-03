@@ -4,8 +4,10 @@ import styles from "@styles/Navbar.module.scss";
 import Link from "next/link";
 import { NextLinkButton } from ".";
 import { menus } from "content/menus";
+import { useRouter } from "next/router";
 
 export const Navbar: FC = () => {
+  const router = useRouter();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
   useEffect(() => {
@@ -41,18 +43,27 @@ export const Navbar: FC = () => {
             <h1 className="mb-0 text-primary">E360</h1>
           </a>
         </Link>
-        <ul className={classNames(styles.menuWrapper, "mb-0 d-flex align-items-center")}>
-          {menus.map((el, i) => (
-            <li key={i}>
-              <Link href={el.href}>
-                <a className={styles.navLink}>{el.text}</a>
-              </Link>
+        {router.pathname.startsWith("/manage") ? (
+          <div className={classNames(styles.buttonWrapper, "d-flex align-items-center")}>
+            <button className={styles.iconBtn}>
+              <i className="bi bi-bell"></i>
+            </button>
+            <button className={styles.profileBtn} style={{ backgroundImage: `url("${"/profile.png"}")` }}></button>
+          </div>
+        ) : (
+          <ul className={classNames(styles.menuWrapper, "mb-0 d-flex align-items-center")}>
+            {menus.map((el, i) => (
+              <li key={i}>
+                <Link href={el.href}>
+                  <a className={styles.navLink}>{el.text}</a>
+                </Link>
+              </li>
+            ))}
+            <li>
+              <NextLinkButton href="/login">Login</NextLinkButton>
             </li>
-          ))}
-          <li>
-            <NextLinkButton href="/login">Login</NextLinkButton>
-          </li>
-        </ul>
+          </ul>
+        )}
       </header>
       <header
         className={classNames(styles.NavbarMobile, "d-flex d-lg-none align-items-center justify-content-between")}
