@@ -1,37 +1,9 @@
-import Image from "next/image";
 import { FC, MouseEventHandler, useEffect, useState } from "react";
 import classNames from "classnames";
 import styles from "@styles/Navbar.module.scss";
 import Link from "next/link";
 import { NextLinkButton } from ".";
-
-export interface Menu {
-  href: string;
-  text: string;
-}
-
-export const menus: Menu[] = [
-  {
-    href: "/#how-it-works",
-    text: "Get Started",
-  },
-  {
-    href: "/#docs",
-    text: "Docs",
-  },
-  {
-    href: "/#pricing",
-    text: "Pricing",
-  },
-  {
-    href: "/about",
-    text: "About",
-  },
-  {
-    href: "/contact",
-    text: "Contact",
-  },
-];
+import { menus } from "content/menus";
 
 export const Navbar: FC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
