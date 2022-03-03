@@ -25,3 +25,26 @@ export const menus: Menu[] = [
     text: "Contact",
   },
 ];
+
+export const manageMenus: Menu[] = [
+  {
+    href: "/manage/profile",
+    text: "Profile",
+  },
+  {
+    href: "/manage/company",
+    text: "Company",
+  },
+  {
+    href: "/manage/team-members",
+    text: "Team Members",
+  },
+  {
+    href: "/manage/payment-history",
+    text: "Payment History",
+  },
+  {
+    href: "/manage/settings",
+    text: "Settings",
+  },
+];

@@ -5,11 +5,15 @@ import { CommonHead, InputGroup, LoginSignupWrapper, PageLayout } from "@compone
 import styles from "@styles/LoginPage.module.scss";
 import btnStyles from "@styles/Button.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const LoginPage: NextPage = () => {
+  const router = useRouter();
+
   const goLogin: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    alert("Logging in...");
+    // alert("Logging in...");
+    router.push("/manage/profile");
   };
 
   return (
