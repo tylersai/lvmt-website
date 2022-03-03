@@ -1,6 +1,7 @@
 export * from "./CommonHead";
 export * from "./PageLayout";
 export * from "./Navbar";
+export * from "./NavbarAlt";
 export * from "./Button";
 export * from "./NextLinkButton";
 export * from "./Footer";
