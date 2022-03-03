@@ -37,7 +37,7 @@ export const Navbar: FC = () => {
         <Link href="/">
           <a className={classNames(styles.logoWrapper, "d-flex align-items-center text-decoration-none")}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="logo" src="/logo@414x414.png" alt="Logo" role="img" width={52} height={52} />
+            <img className={styles.logo} src="/logo@414x414.png" alt="Logo" role="img" />
             <h1 className="mb-0 text-primary">E360</h1>
           </a>
         </Link>
@@ -60,7 +60,7 @@ export const Navbar: FC = () => {
         <Link href="/">
           <a className="d-flex align-items-center text-decoration-none">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="logo" src="/logo@414x414.png" alt="Logo" role="img" width={42} height={42} />
+            <img className={styles.logoMobile} src="/logo@414x414.png" alt="Logo" role="img" />
             <h1 className="mb-0 ms-3 text-primary">E360</h1>
           </a>
         </Link>
