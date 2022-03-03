@@ -16,8 +16,8 @@ export const menus: Menu[] = [
     text: "Get Started",
   },
   {
-    href: "/#features",
-    text: "Features",
+    href: "/#docs",
+    text: "Docs",
   },
   {
     href: "/#pricing",
