@@ -5,7 +5,7 @@ import { manageMenus } from "content/menus";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export const ManageLayout: FC = ({ children }) => {
+export const ManageLayout: FC<{ title?: string | undefined }> = ({ children, title }) => {
   const router = useRouter();
 
   return (
@@ -31,6 +31,7 @@ export const ManageLayout: FC = ({ children }) => {
           </ul>
         </div>
         <div className={classNames(styles.mainArea, "col-11 col-md-7 col-lg-8 px-2 px-sm-3 px-md-4 px-lg-5")}>
+          {title && <h2 className="mb-4 mb-md-5">{title}</h2>}
           {children}
         </div>
       </div>
