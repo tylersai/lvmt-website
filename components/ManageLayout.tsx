@@ -9,9 +9,9 @@ export const ManageLayout: FC = ({ children }) => {
   const router = useRouter();
 
   return (
-    <section className={styles.ManageLayout}>
+    <section className={classNames(styles.ManageLayout, "pb-5")}>
       <div className="row justify-content-center">
-        <div className="col-md-4 col-lg-3 d-none d-md-block">
+        <div className="col-md-4 col-lg-3 d-none d-md-block pe-md-2 pe-lg-4">
           <ul className={classNames(styles.leftMenu, "m-0 p-0 px-lg-3")}>
             {manageMenus.map((el) => (
               <li key={el.text} className="list-unstyled m-0 p-0">
@@ -30,7 +30,9 @@ export const ManageLayout: FC = ({ children }) => {
             ))}
           </ul>
         </div>
-        <div className="col-md-7 col-lg-8">{children}</div>
+        <div className={classNames(styles.mainArea, "col-11 col-md-7 col-lg-8 px-2 px-sm-3 px-md-4 px-lg-5")}>
+          {children}
+        </div>
       </div>
     </section>
   );

@@ -1,11 +1,25 @@
 .ManageLayout {
-  margin-top: calc(42px + 8vw);
+  padding-top: calc(42px + 8vw);
+}
+
+.mainArea {
+  min-height: calc(100vh - 42px - 8vw - 3rem);
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .mainArea {
+    border-left: 1px solid var(--sh-gray-lightest);
+  }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .ManageLayout {
-    margin-top: 120px;
+    padding-top: 120px;
+  }
+  .mainArea {
+    min-height: calc(100vh - 120px - 3rem);
   }
 }
 
