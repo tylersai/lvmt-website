@@ -1,0 +1,14 @@
+.profileFrame {
+  border-radius: 8px;
+  border: 2px solid var(--sh-gray-lighter);
+}
+
+.changeBtn {
+  border: none;
+  color: var(--bs-primary);
+  background-color: transparent;
+  transition: var(--transition);
+  &:hover {
+    color: var(--bs-blue-400);
+  }
+}
