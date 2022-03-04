@@ -1,0 +1,29 @@
+.ManageLayout {
+  margin-top: calc(42px + 8vw);
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .ManageLayout {
+    margin-top: 120px;
+  }
+}
+
+.leftMenu {
+  & > li {
+    border-bottom: 1px solid var(--sh-gray-lightest);
+  }
+  & > li:last-child {
+    border-bottom: none;
+  }
+}
+
+.link {
+  font-weight: 500;
+  color: var(--sh-gray);
+  transition: var(--transition);
+}
+
+.linkSelected {
+  color: var(--bs-primary);
+}
