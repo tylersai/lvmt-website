@@ -32,8 +32,7 @@ const ProfilePage: NextPage = () => {
 
   return (
     <PageLayout>
-      <ManageLayout>
-        <h2 className="mb-4 mb-md-5">Welcome, {currentUser?.firstName}!</h2>
+      <ManageLayout title={`Welcome, ${currentUser?.firstName}!`}>
         <div className="row justify-content-center flex-row-reverse">
           <div className="col-lg-6 d-flex flex-column align-items-center pb-4">
             <div className={classNames(styles.profileFrame, "d-flex p-2 p-md-3")}>
