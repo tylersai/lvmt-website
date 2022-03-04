@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { NavbarAlt, PageLayout } from "@components";
+import { PageLayout, ManageLayout } from "@components";
 import styles from "@styles/Profile.module.scss";
 
 const ProfilePage: NextPage = () => {
   return (
     <PageLayout>
-      <section></section>
+      <ManageLayout></ManageLayout>
     </PageLayout>
   );
 };
