@@ -24,4 +24,7 @@
     opacity: 0.5;
     letter-spacing: normal;
   }
+  & > input:disabled {
+    opacity: 1;
+  }
 }
