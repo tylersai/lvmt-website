@@ -1,10 +1,8 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
 import { PageLayout, ManageLayout, InputGroup } from "@components";
-import styles from "@styles/Company.module.scss";
 import buttonStyles from "@styles/Button.module.scss";
 import { MouseEventHandler, useState } from "react";
-import Image from "next/image";
 
 interface Company {
   companyName: string;
