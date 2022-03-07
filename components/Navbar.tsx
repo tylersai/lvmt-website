@@ -3,7 +3,7 @@ import classNames from "classnames";
 import styles from "@styles/Navbar.module.scss";
 import Link from "next/link";
 import { NextLinkButton } from ".";
-import { menus } from "content/menus";
+import { menus, manageMenus } from "content/menus";
 import { useRouter } from "next/router";
 
 export const Navbar: FC = () => {
@@ -99,13 +99,38 @@ export const Navbar: FC = () => {
                 </Link>
               </li>
             ))}
-            <li className="my-2">
-              <Link href="/login">
-                <a className={styles.navLinkMobile}>
-                  Login <i className="bi bi-arrow-right"></i>
-                </a>
-              </Link>
-            </li>
+            {router.pathname.startsWith("/manage") ? (
+              <li key={menus.length} className="my-2 p-3 pb-2 bg-blue-700 opacity-75">
+                <span className={classNames(styles.navLinkMobile, "d-block text-center")}>
+                  Manage <i className="bi bi-caret-down-fill"></i>
+                </span>
+                <hr className="mx-auto mt-3 mb-1" style={{ width: "90%" }} />
+                <ul className="px-3 py-2">
+                  {manageMenus.map((el, i) => (
+                    <li key={i} className="my-2">
+                      <Link href={el.href}>
+                        <a className={classNames(styles.navLinkMobile, "text-center fs-13")}>{el.text}</a>
+                      </Link>
+                    </li>
+                  ))}
+                  <li key={manageMenus.length} className="my-2">
+                    <Link href="/">
+                      <a className={classNames(styles.navLinkMobile, "text-center fs-13")}>
+                        Logout <i className="bi bi-arrow-right"></i>
+                      </a>
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              <li key={menus.length} className="my-2">
+                <Link href="/login">
+                  <a className={styles.navLinkMobile}>
+                    Login <i className="bi bi-arrow-right"></i>
+                  </a>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </header>

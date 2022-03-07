@@ -108,10 +108,11 @@
 
 .navLinkMobile,
 .navLinkMobile:visited {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 400;
   letter-spacing: 1px;
   text-decoration: none;
+  text-transform: uppercase;
   color: var(--bs-light);
   transition: var(--transition);
 }
