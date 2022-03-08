@@ -37,6 +37,34 @@
   }
 }
 
+.Button_primary_naked {
+  @extend .Button;
+  color: var(--bs-primary);
+  background-color: var(--sh-light);
+  &:hover {
+    color: var(--bs-primary);
+    background-color: var(--bs-blue-100);
+  }
+}
+.Button_secondary_naked {
+  @extend .Button;
+  color: var(--bs-pink-500);
+  background-color: var(--sh-light);
+  &:hover {
+    color: var(--bs-pink-500);
+    background-color: var(--bs-pink-100);
+  }
+}
+.Button_default_naked {
+  @extend .Button;
+  color: var(--bs-gray-800);
+  background-color: var(--sh-light);
+  &:hover {
+    color: var(--bs-gray-800);
+    background-color: var(--bs-gray-200);
+  }
+}
+
 .g25rem {
   gap: 0.25rem;
 }
