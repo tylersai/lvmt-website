@@ -101,18 +101,13 @@ const dummyMembers: Member[] = [
 const TeamMembersPage: NextPage = () => {
   const [teamMembers] = useState<Member[]>(dummyMembers);
 
-  const goSave: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault();
-    alert("Feature coming soon...");
-  };
-
   return (
     <PageLayout>
       <ManageLayout title="Manage Team Members">
         <div className="row">
           <div className="col-12">
             <div className="d-flex justify-content-end">
-              <Button className="py-2" icon="plus-lg" iconPlacement="left">
+              <Button className="py-2" icon="plus-lg" iconPlacement="left" variant="naked">
                 New Member
               </Button>
             </div>
