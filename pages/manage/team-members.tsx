@@ -3,8 +3,7 @@ import type { NextPage } from "next";
 import { PageLayout, ManageLayout, Button } from "@components";
 import { formatMoney } from "@lib/functions";
 import styles from "@styles/TeamMembers.module.scss";
-import buttonStyles from "@styles/Button.module.scss";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 
 interface Member {
   sid: string;
@@ -28,7 +27,7 @@ const dummyMembers: Member[] = [
     position: "Product Owner",
     accessRole: "Manager/Admin",
     rate: 1200,
-    profile: "/profile.png",
+    profile: "/members/johndoe.png",
   },
   {
     sid: "2",
@@ -115,6 +114,7 @@ const TeamMembersPage: NextPage = () => {
               <table className="mt-3 mt-md-4">
                 <thead>
                   <tr>
+                    <th></th>
                     <th>Full Name</th>
                     <th>Initials</th>
                     <th>Email</th>
@@ -129,14 +129,20 @@ const TeamMembersPage: NextPage = () => {
                     teamMembers.length > 0 &&
                     teamMembers.map((el) => (
                       <tr key={el.sid}>
+                        <td>
+                          <div className={classNames("d-flex", styles.profileWrapper)}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img className="text-center text-sh-gray-light" src={el.profile} alt={el.initials} />
+                          </div>
+                        </td>
                         <td className="text-nowrap">
                           {el.firstName} {el.lastName}
                         </td>
                         <td>{el.initials}</td>
                         <td className="text-nowrap">{el.email}</td>
-                        <td>{el.position}</td>
-                        <td>{el.accessRole}</td>
-                        <td className="text-end">{formatMoney(el.rate)}</td>
+                        <td className="text-nowrap">{el.position}</td>
+                        <td className="text-nowrap">{el.accessRole}</td>
+                        <td className="text-end text-nowrap">{formatMoney(el.rate)}</td>
                         <td>
                           <div className="d-flex align-items-center">
                             <button className={classNames(styles.actionBtn, "p-0 me-2 text-primary")}>
