@@ -10,3 +10,4 @@ export * from "./PricingCard";
 export * from "./LoginSignupWrapper";
 export * from "./InputGroup";
 export * from "./ManageLayout";
+export * from "./Pagination";
