@@ -2,6 +2,9 @@
 
 :root {
   --transition: all 180ms 50ms ease-out;
+  --text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15);
+  --box-shadow-1: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+  --box-shadow-2: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -85,7 +88,7 @@ b {
 }
 
 .text-shadow {
-  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15) !important;
+  text-shadow: var(--text-shadow) !important;
 }
 
 .PageLayout hr {
@@ -130,4 +133,27 @@ b {
   100% {
     opacity: 0;
   }
+}
+
+table {
+  width: 100%;
+  font-size: 14px;
+}
+tbody > tr {
+  border-bottom: 1px solid var(--sh-gray-lightest);
+}
+table.no-bottom-line tbody > tr:last-child {
+  border-bottom: none;
+}
+th,
+td {
+  padding: 10px 12px;
+}
+thead {
+  color: var(--bs-primary);
+  background-color: var(--sh-light);
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+}
+th {
+  font-weight: 600;
 }
