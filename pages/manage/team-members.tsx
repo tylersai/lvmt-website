@@ -116,36 +116,47 @@ const TeamMembersPage: NextPage = () => {
                 New Member
               </Button>
             </div>
-            <table className="mt-3 mt-md-4">
-              <thead>
-                <tr>
-                  <th>Full Name</th>
-                  <th>Initials</th>
-                  <th>Email</th>
-                  <th>Position</th>
-                  <th>Access Role</th>
-                  <th className="text-end">Rate ($/hr)</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {teamMembers &&
-                  teamMembers.length > 0 &&
-                  teamMembers.map((el) => (
-                    <tr key={el.sid}>
-                      <td>
-                        {el.firstName} {el.lastName}
-                      </td>
-                      <td>{el.initials}</td>
-                      <td>{el.email}</td>
-                      <td>{el.position}</td>
-                      <td>{el.accessRole}</td>
-                      <td className="text-end">{formatMoney(el.rate)}</td>
-                      <td></td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+            <div className="overflow-auto">
+              <table className="mt-3 mt-md-4">
+                <thead>
+                  <tr>
+                    <th>Full Name</th>
+                    <th>Initials</th>
+                    <th>Email</th>
+                    <th>Position</th>
+                    <th>Access Role</th>
+                    <th className="text-end">Rate ($/hr)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {teamMembers &&
+                    teamMembers.length > 0 &&
+                    teamMembers.map((el) => (
+                      <tr key={el.sid}>
+                        <td className="text-nowrap">
+                          {el.firstName} {el.lastName}
+                        </td>
+                        <td>{el.initials}</td>
+                        <td className="text-nowrap">{el.email}</td>
+                        <td>{el.position}</td>
+                        <td>{el.accessRole}</td>
+                        <td className="text-end">{formatMoney(el.rate)}</td>
+                        <td>
+                          <div className="d-flex align-items-center">
+                            <button className={classNames(styles.actionBtn, "p-0 me-2 text-primary")}>
+                              <i className="bi bi-pencil-fill"></i>
+                            </button>
+                            <button className={classNames(styles.actionBtn, "p-0 text-danger")}>
+                              <i className="bi bi-trash-fill"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </ManageLayout>
