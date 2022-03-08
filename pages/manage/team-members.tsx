@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { PageLayout, ManageLayout, Button } from "@components";
+import { PageLayout, ManageLayout, Button, Pagination } from "@components";
 import { formatMoney } from "@lib/functions";
 import styles from "@styles/TeamMembers.module.scss";
 import { useState } from "react";
@@ -157,6 +157,9 @@ const TeamMembersPage: NextPage = () => {
                     ))}
                 </tbody>
               </table>
+              <div className="d-flex justify-content-center pt-2 pb-4">
+                <Pagination />
+              </div>
             </div>
           </div>
         </div>
