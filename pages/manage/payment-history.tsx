@@ -10,7 +10,7 @@ interface Payment {
   endDate: string;
   paymentMethod: "PayPal" | "Debit/Credit";
   invoiceNo?: string;
-  status: "COMPLETED" | "REFUNDED" | "CANCELLED";
+  status: "completed" | "refunded" | "cancelled";
   initiatedOn?: string;
   paidOn?: string;
 }
@@ -22,7 +22,7 @@ const paymentHistories: Payment[] = [
     endDate: "Feb 23, 2022",
     paymentMethod: "Debit/Credit",
     invoiceNo: "INV20220001",
-    status: "COMPLETED",
+    status: "completed",
   },
   {
     sid: "2",
@@ -30,14 +30,14 @@ const paymentHistories: Payment[] = [
     endDate: "Jan 15, 2022",
     paymentMethod: "PayPal",
     invoiceNo: "INV20210004",
-    status: "REFUNDED",
+    status: "refunded",
   },
   {
     sid: "3",
     startDate: "Dec 14, 2022",
     endDate: "Jan 14, 2022",
     paymentMethod: "Debit/Credit",
-    status: "CANCELLED",
+    status: "cancelled",
   },
   {
     sid: "4",
@@ -45,7 +45,7 @@ const paymentHistories: Payment[] = [
     endDate: "Dec 13, 2021",
     paymentMethod: "PayPal",
     invoiceNo: "INV20210002",
-    status: "COMPLETED",
+    status: "completed",
   },
   {
     sid: "5",
@@ -53,7 +53,7 @@ const paymentHistories: Payment[] = [
     endDate: "Oct 03, 2021",
     paymentMethod: "Debit/Credit",
     invoiceNo: "INV20210001",
-    status: "COMPLETED",
+    status: "completed",
   },
 ];
 
@@ -94,10 +94,21 @@ const PaymentHistoryPage: NextPage = () => {
                         <td className="text-nowrap">{el.startDate}</td>
                         <td className="text-nowrap">{el.endDate}</td>
                         <td className="text-nowrap">{el.paymentMethod}</td>
-                        <td className="text-nowrap">{el.invoiceNo || "-"}</td>
-                        <td className="text-nowrap text-capitalize">{el.status}</td>
+                        <td className="text-nowrap fs-13 fw-500 letter-spacing-1">{el.invoiceNo || "-"}</td>
+                        <td
+                          className={classNames(
+                            "text-nowrap text-capitalize",
+                            el.status === "completed"
+                              ? "text-primary"
+                              : el.status === "cancelled"
+                              ? "text-pink-400"
+                              : ""
+                          )}
+                        >
+                          {el.status}
+                        </td>
                         <td>
-                          {el.status !== "CANCELLED" && (
+                          {el.status !== "cancelled" && (
                             <div className="d-flex align-items-center" style={{ gap: "0.5rem" }}>
                               <button className="p-0 text-primary bg-transparent border-0">
                                 <i className="bi bi-download"></i>
