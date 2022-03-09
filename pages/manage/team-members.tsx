@@ -144,8 +144,8 @@ const TeamMembersPage: NextPage = () => {
                         <td className="text-nowrap">{el.accessRole}</td>
                         <td className="text-end text-nowrap">{formatMoney(el.rate)}</td>
                         <td>
-                          <div className="d-flex align-items-center">
-                            <button className="p-0 me-2 text-primary bg-transparent border-0">
+                          <div className="d-flex align-items-center" style={{ gap: "0.5rem" }}>
+                            <button className="p-0 text-primary bg-transparent border-0">
                               <i className="bi bi-pencil-fill"></i>
                             </button>
                             <button className="p-0 text-danger bg-transparent border-0">

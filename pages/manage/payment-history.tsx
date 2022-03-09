@@ -2,8 +2,63 @@ import classNames from "classnames";
 import type { NextPage } from "next";
 import { PageLayout, ManageLayout, Button, Pagination } from "@components";
 import styles from "@styles/PaymentHistory.module.scss";
+import { useState } from "react";
+
+interface Payment {
+  sid: string;
+  startDate: string;
+  endDate: string;
+  paymentMethod: "PayPal" | "Debit/Credit";
+  invoiceNo?: string;
+  status: "COMPLETED" | "REFUNDED" | "CANCELLED";
+  initiatedOn?: string;
+  paidOn?: string;
+}
+
+const paymentHistories: Payment[] = [
+  {
+    sid: "1",
+    startDate: "Jan 23, 2022",
+    endDate: "Feb 23, 2022",
+    paymentMethod: "Debit/Credit",
+    invoiceNo: "INV20220001",
+    status: "COMPLETED",
+  },
+  {
+    sid: "2",
+    startDate: "Dec 15, 2021",
+    endDate: "Jan 15, 2022",
+    paymentMethod: "PayPal",
+    invoiceNo: "INV20210004",
+    status: "REFUNDED",
+  },
+  {
+    sid: "3",
+    startDate: "Dec 14, 2022",
+    endDate: "Jan 14, 2022",
+    paymentMethod: "Debit/Credit",
+    status: "CANCELLED",
+  },
+  {
+    sid: "4",
+    startDate: "Nov 13, 2021",
+    endDate: "Dec 13, 2021",
+    paymentMethod: "PayPal",
+    invoiceNo: "INV20210002",
+    status: "COMPLETED",
+  },
+  {
+    sid: "5",
+    startDate: "Jul 03, 2021",
+    endDate: "Oct 03, 2021",
+    paymentMethod: "Debit/Credit",
+    invoiceNo: "INV20210001",
+    status: "COMPLETED",
+  },
+];
 
 const PaymentHistoryPage: NextPage = () => {
+  const [histories, setHistories] = useState<Payment[]>(paymentHistories);
   return (
     <PageLayout>
       <ManageLayout title="Payment History">
@@ -18,6 +73,45 @@ const PaymentHistoryPage: NextPage = () => {
             <div className="d-flex align-items-center mt-3 px-3">
               <p className="my-0 fs-14 fw-500 me-3 text-sh-gray">Next Billing Date :</p>
               <span className="fs-14 fw-600 text-sh-gray">Feb 23, 2022</span>
+            </div>
+            <div className="overflow-auto pb-3">
+              <table className="mt-3 mt-md-4">
+                <thead>
+                  <tr>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Payment Method</th>
+                    <th>Invoice No.</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {histories &&
+                    histories.length > 0 &&
+                    histories.map((el) => (
+                      <tr key={el.sid}>
+                        <td className="text-nowrap">{el.startDate}</td>
+                        <td className="text-nowrap">{el.endDate}</td>
+                        <td className="text-nowrap">{el.paymentMethod}</td>
+                        <td className="text-nowrap">{el.invoiceNo || "-"}</td>
+                        <td className="text-nowrap text-capitalize">{el.status}</td>
+                        <td>
+                          {el.status !== "CANCELLED" && (
+                            <div className="d-flex align-items-center" style={{ gap: "0.5rem" }}>
+                              <button className="p-0 text-primary bg-transparent border-0">
+                                <i className="bi bi-download"></i>
+                              </button>
+                            </div>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="d-flex justify-content-center pt-1 pb-4">
+              <Pagination />
             </div>
           </div>
         </div>
