@@ -124,7 +124,7 @@ const PaymentHistoryPage: NextPage = () => {
             <div className="d-flex justify-content-center pt-1 pb-5">
               <Pagination />
             </div>
-            <h4 className="my-0">Renewal</h4>
+            <h5 className="my-0">Renewal</h5>
             <div className="pb-5 pt-3 px-3">
               <p className="fs-14">
                 Renewal policies goes here.... Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
@@ -132,7 +132,7 @@ const PaymentHistoryPage: NextPage = () => {
               </p>
               <Button className="py-2">Renew Subscription</Button>
             </div>
-            <h4 className="my-0">Cancellation</h4>
+            <h5 className="my-0">Cancellation</h5>
             <div className="pb-4 pt-3 px-3">
               <p className="fs-14">
                 Cancellation policies goes here.... Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
