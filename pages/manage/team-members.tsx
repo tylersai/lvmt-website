@@ -145,10 +145,10 @@ const TeamMembersPage: NextPage = () => {
                         <td className="text-end text-nowrap">{formatMoney(el.rate)}</td>
                         <td>
                           <div className="d-flex align-items-center">
-                            <button className={classNames(styles.actionBtn, "p-0 me-2 text-primary")}>
+                            <button className="p-0 me-2 text-primary bg-transparent border-0">
                               <i className="bi bi-pencil-fill"></i>
                             </button>
-                            <button className={classNames(styles.actionBtn, "p-0 text-danger")}>
+                            <button className="p-0 text-danger bg-transparent border-0">
                               <i className="bi bi-trash-fill"></i>
                             </button>
                           </div>
