@@ -121,8 +121,26 @@ const PaymentHistoryPage: NextPage = () => {
                 </tbody>
               </table>
             </div>
-            <div className="d-flex justify-content-center pt-1 pb-4">
+            <div className="d-flex justify-content-center pt-1 pb-5">
               <Pagination />
+            </div>
+            <h4 className="my-0">Renewal</h4>
+            <div className="pb-5 pt-3 px-3">
+              <p className="fs-14">
+                Renewal policies goes here.... Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit...
+              </p>
+              <Button className="py-2">Renew Subscription</Button>
+            </div>
+            <h4 className="my-0">Cancellation</h4>
+            <div className="pb-4 pt-3 px-3">
+              <p className="fs-14">
+                Cancellation policies goes here.... Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit...
+              </p>
+              <Button color="secondary" className="py-2">
+                Cancel Subscription
+              </Button>
             </div>
           </div>
         </div>
