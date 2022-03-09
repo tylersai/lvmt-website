@@ -110,7 +110,7 @@ const TeamMembersPage: NextPage = () => {
                 New Member
               </Button>
             </div>
-            <div className="overflow-auto">
+            <div className="overflow-auto pb-3">
               <table className="mt-3 mt-md-4">
                 <thead>
                   <tr>
@@ -157,9 +157,9 @@ const TeamMembersPage: NextPage = () => {
                     ))}
                 </tbody>
               </table>
-              <div className="d-flex justify-content-center pt-2 pb-4">
-                <Pagination />
-              </div>
+            </div>
+            <div className="d-flex justify-content-center pt-1 pb-4">
+              <Pagination />
             </div>
           </div>
         </div>
