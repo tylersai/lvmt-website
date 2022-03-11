@@ -1,0 +1,11 @@
+.themeColorBtn {
+  border: 1px solid var(--sh-gray-lightest);
+  border-radius: 3px;
+  width: 34px;
+  height: 20px;
+  padding: 4px;
+  background-color: transparent;
+  & > span {
+    border-radius: 1px;
+  }
+}
