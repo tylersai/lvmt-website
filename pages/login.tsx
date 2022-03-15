@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { FC, FormEventHandler, useCallback, useState } from "react";
+import { ChangeEventHandler, FC, FormEventHandler, useCallback, useState } from "react";
 import { CommonHead, InputGroup, LoginSignupWrapper, PageLayout } from "@components";
 import styles from "@styles/LoginPage.module.scss";
 import btnStyles from "@styles/Button.module.scss";
@@ -9,6 +9,15 @@ import { useRouter } from "next/router";
 
 const LoginPage: NextPage = () => {
   const router = useRouter();
+
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const onEmailChange = useCallback<ChangeEventHandler<HTMLInputElement>>((e) => setEmail(e.target.value), [setEmail]);
+  const onPasswordChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
+    (e) => setPassword(e.target.value),
+    [setPassword]
+  );
 
   const goLogin: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -22,7 +31,15 @@ const LoginPage: NextPage = () => {
         <div className="row justify-content-center">
           <div className="col-10 col-sm-9 col-md-8">
             <form onSubmit={goLogin}>
-              <InputGroup className="pb-4" label="Email" placeholder="johndoe@example.com" name="email" required />
+              <InputGroup
+                className="pb-4"
+                label="Email"
+                placeholder="johndoe@example.com"
+                name="email"
+                required
+                value={email}
+                onChange={onEmailChange}
+              />
               <InputGroup
                 name="password"
                 className="pb-4"
@@ -30,6 +47,8 @@ const LoginPage: NextPage = () => {
                 placeholder="min. 8 characters"
                 inputType="password"
                 required
+                value={password}
+                onChange={onPasswordChange}
               />
               <div className="d-flex align-items-center justify-content-between pb-4 px-1">
                 <div className="d-flex align-items-center">
