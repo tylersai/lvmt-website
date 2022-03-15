@@ -27,4 +27,19 @@
   & > input:disabled {
     opacity: 1;
   }
+  & > small {
+    top: 64px;
+    left: 8px;
+    right: 8px;
+    color: var(--sh-gray-dark);
+  }
+}
+
+.InputGroup_error {
+  & > input {
+    border-color: var(--bs-pink-300);
+  }
+  & > small {
+    color: var(--bs-pink-400);
+  }
 }
