@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { ChangeEventHandler, FC, FormEventHandler, useCallback, useState } from "react";
+import { ChangeEventHandler, FocusEventHandler, FormEventHandler, useCallback, useState } from "react";
 import { CommonHead, InputGroup, LoginSignupWrapper, PageLayout } from "@components";
 import styles from "@styles/LoginPage.module.scss";
 import btnStyles from "@styles/Button.module.scss";
@@ -11,18 +11,34 @@ const LoginPage: NextPage = () => {
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
+  const [emailMsg, setEmailMsg] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [passwordMsg, setPasswordMsg] = useState<string>("");
 
   const onEmailChange = useCallback<ChangeEventHandler<HTMLInputElement>>((e) => setEmail(e.target.value), [setEmail]);
+  const clearEmailMsgOnFocus = useCallback<FocusEventHandler<HTMLInputElement>>(() => setEmailMsg(""), [setEmailMsg]);
+
   const onPasswordChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (e) => setPassword(e.target.value),
     [setPassword]
   );
+  const clearPasswordMsgOnFocus = useCallback<FocusEventHandler<HTMLInputElement>>(
+    () => setPasswordMsg(""),
+    [setPasswordMsg]
+  );
 
   const goLogin: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    // alert("Logging in...");
-    router.push("/manage/profile");
+    if (email && email.trim() && password) {
+      router.push("/manage/profile");
+    } else {
+      if (!email || !email.trim()) {
+        setEmailMsg("Email is required");
+      }
+      if (!password) {
+        setPasswordMsg("Password is required");
+      }
+    }
   };
 
   return (
@@ -39,6 +55,8 @@ const LoginPage: NextPage = () => {
                 required
                 value={email}
                 onChange={onEmailChange}
+                message={emailMsg}
+                onFocus={clearEmailMsgOnFocus}
               />
               <InputGroup
                 name="password"
@@ -49,6 +67,8 @@ const LoginPage: NextPage = () => {
                 required
                 value={password}
                 onChange={onPasswordChange}
+                message={passwordMsg}
+                onFocus={clearPasswordMsgOnFocus}
               />
               <div className="d-flex align-items-center justify-content-between pb-4 px-1">
                 <div className="d-flex align-items-center">
