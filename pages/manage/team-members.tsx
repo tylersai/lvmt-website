@@ -14,7 +14,7 @@ interface Member {
   position: string;
   accessRole: "Manager" | "Lawyer" | "Staff" | "Admin" | "Manager/Admin";
   rate: number;
-  profile: string;
+  profile?: string | null;
 }
 
 const dummyMembers: Member[] = [
@@ -60,7 +60,8 @@ const dummyMembers: Member[] = [
     position: "Secretary",
     accessRole: "Lawyer",
     rate: 150,
-    profile: "/members/amyjane.png",
+    // profile: "/members/amyjane.png",
+    profile: null,
   },
   {
     sid: "5",
@@ -82,7 +83,7 @@ const dummyMembers: Member[] = [
     position: "Senior Associate",
     accessRole: "Lawyer",
     rate: 400,
-    profile: "/members/jakecombs.png",
+    // profile: "/members/jakecombs.png",
   },
   {
     sid: "7",
@@ -130,9 +131,19 @@ const TeamMembersPage: NextPage = () => {
                     teamMembers.map((el) => (
                       <tr key={el.sid}>
                         <td>
-                          <div className={classNames("d-flex", styles.profileWrapper)}>
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img className="text-center text-sh-gray-light" src={el.profile} alt={el.initials} />
+                          <div
+                            className={classNames(
+                              "d-flex justify-content-center align-items-center text-center text-sh-gray-light",
+                              styles.profileWrapper,
+                              !el.profile && "bg-secondary"
+                            )}
+                          >
+                            {el.profile ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={el.profile} alt={el.initials} />
+                            ) : (
+                              <span className="text-light fs-10">{el.initials}</span>
+                            )}
                           </div>
                         </td>
                         <td className="text-nowrap">
