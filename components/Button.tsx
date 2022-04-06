@@ -43,8 +43,8 @@ export const Button: FC<ButtonProps> = ({
       href,
     },
     <>
-      {icon && iconPlacement == "left" && <i className={`bi bi-${icon} me-2`}></i>}
+      {icon && iconPlacement == "left" && <i className={`bi bi-${icon}`}></i>}
       <span className={textClassName}>{children}</span>
-      {icon && iconPlacement == "right" && <i className={`bi bi-${icon} ms-2`}></i>}
+      {icon && iconPlacement == "right" && <i className={`bi bi-${icon}`}></i>}
     </>
   );
