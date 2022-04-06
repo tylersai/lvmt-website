@@ -12,6 +12,7 @@ interface ButtonProps {
   color?: ButtonColor;
   variant?: ButtonVariant;
   className?: string;
+  textClassName?: string;
   href?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   icon?: string;
@@ -23,6 +24,7 @@ export const Button: FC<ButtonProps> = ({
   color = "primary",
   variant = "default",
   className,
+  textClassName,
   onClick,
   href = "#",
   icon,
@@ -42,7 +44,7 @@ export const Button: FC<ButtonProps> = ({
     },
     <>
       {icon && iconPlacement == "left" && <i className={`bi bi-${icon} me-2`}></i>}
-      <span>{children}</span>
+      <span className={textClassName}>{children}</span>
       {icon && iconPlacement == "right" && <i className={`bi bi-${icon} ms-2`}></i>}
     </>
   );
