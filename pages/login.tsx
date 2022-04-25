@@ -1,13 +1,25 @@
 import classNames from "classnames";
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import { ChangeEventHandler, FocusEventHandler, FormEventHandler, useCallback, useState } from "react";
 import { CommonHead, InputGroup, LoginSignupWrapper, PageLayout } from "@components";
 import styles from "@styles/LoginPage.module.scss";
 import btnStyles from "@styles/Button.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { ClientSafeProvider, getProviders, LiteralUnion } from "next-auth/react";
+import { BuiltInProviderType } from "next-auth/providers";
 
-const LoginPage: NextPage = () => {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const providers = await getProviders();
+
+  return {
+    props: { providers },
+  };
+};
+
+const LoginPage: NextPage<{
+  providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null;
+}> = (props) => {
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
@@ -43,7 +55,11 @@ const LoginPage: NextPage = () => {
 
   return (
     <PageLayout hideHeader hideFooter CommonHeadComp={<CommonHead title={"E360 \u2022 Login"} />}>
-      <LoginSignupWrapper formType="login" desc="See your profile, purchases and payment info.">
+      <LoginSignupWrapper
+        formType="login"
+        desc="See your profile, purchases and payment info."
+        providers={props.providers}
+      >
         <div className="row justify-content-center">
           <div className="col-10 col-sm-9 col-md-8">
             <form onSubmit={goLogin}>

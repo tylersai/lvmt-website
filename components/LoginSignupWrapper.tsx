@@ -5,15 +5,20 @@ import { FC } from "react";
 import styles from "@styles/LoginSignupWrapper.module.scss";
 import { useRouter } from "next/router";
 import { NextLinkButton } from "./NextLinkButton";
+import { ClientSafeProvider, LiteralUnion, signIn } from "next-auth/react";
+import { BuiltInProviderType } from "next-auth/providers";
+import { Button } from "./Button";
 
 interface LoginSignupWrapperProps {
   className?: string | undefined;
   formType: "login" | "signup";
   desc: string;
+  providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null;
 }
 
-export const LoginSignupWrapper: FC<LoginSignupWrapperProps> = ({ className, formType, desc, children }) => {
+export const LoginSignupWrapper: FC<LoginSignupWrapperProps> = ({ className, formType, desc, providers, children }) => {
   const router = useRouter();
+
   return (
     <section className={classNames("row justify-content-center align-items-stretch", className)}>
       <div className="col-12 col-lg-6 pt-5 pb-4">
@@ -43,14 +48,20 @@ export const LoginSignupWrapper: FC<LoginSignupWrapperProps> = ({ className, for
                 <span className="text-capitalize">{formType}</span> with:
               </p>
               <div className={classNames(styles.g25rem, "d-flex align-items-center")}>
-                <NextLinkButton
-                  href="#"
-                  icon="bi bi-google"
-                  iconPlacement="left"
-                  className={classNames(styles.socialBtn, "bg-transparent text-primary")}
-                >
-                  <span className="d-none d-sm-inline fw-500">Google</span>
-                </NextLinkButton>
+                {providers &&
+                  Object.values(providers).map((provider) => (
+                    <Button
+                      key={provider.name}
+                      icon="bi bi-google"
+                      iconPlacement="left"
+                      className={classNames(styles.socialBtn, "bg-transparent text-primary")}
+                      textClassName="d-none d-sm-inline"
+                      onClick={() => signIn(provider.id)}
+                    >
+                      {provider.name}
+                    </Button>
+                  ))}
+
                 <NextLinkButton
                   href="#"
                   icon="bi bi-apple"
