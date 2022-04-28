@@ -77,5 +77,9 @@ export default NextAuth({
       }
       return session;
     },
+
+    redirect: ({ baseUrl }) => {
+      return new Promise((resolve) => resolve(baseUrl));
+    },
   },
 });
