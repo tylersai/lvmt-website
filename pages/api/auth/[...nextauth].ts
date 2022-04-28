@@ -71,7 +71,7 @@ export default NextAuth({
             Authorization: `Bearer ${token.accessToken}`,
           },
         });
-        session.user = data;
+        session.user = { ...data, image: data.profileUrl };
       } catch (error) {
         console.error(error);
       }

@@ -17,14 +17,10 @@ export const ProfilePicture: FC<ProfilePictureProps> = ({ className, profileUrl,
       className={classNames(
         className,
         styles.ProfilePicture,
-        "d-inline-flex justify-content-center align-items-center"
+        "d-inline-flex justify-content-center align-items-center text-light fs-12 fw-400"
       )}
     >
-      {profileUrl ? (
-        <img src={profileUrl} alt={initials || ""} />
-      ) : (
-        <span className="text-light fs-12 fw-400">{initials}</span>
-      )}
+      {profileUrl ? <img src={profileUrl} alt={initials || ""} /> : <span>{initials}</span>}
     </div>
   );
 };
