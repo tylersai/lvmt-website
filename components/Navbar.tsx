@@ -5,8 +5,11 @@ import Link from "next/link";
 import { NextLinkButton } from ".";
 import { menus, manageMenus } from "content/menus";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import { ProfilePicture } from "./ProfilePicture";
 
 export const Navbar: FC = () => {
+  const { data, status } = useSession();
   const router = useRouter();
   const [openMenu, setOpenMenu] = useState<boolean>(false);
 
@@ -60,7 +63,11 @@ export const Navbar: FC = () => {
               </li>
             ))}
             <li>
-              <NextLinkButton href="/login">Login</NextLinkButton>
+              {status === "authenticated" ? (
+                <ProfilePicture profileUrl={data.user?.image} name={data.user?.name} />
+              ) : (
+                <NextLinkButton href="/login">Login</NextLinkButton>
+              )}
             </li>
           </ul>
         )}
@@ -124,11 +131,18 @@ export const Navbar: FC = () => {
               </li>
             ) : (
               <li key={menus.length} className="my-2">
-                <Link href="/login">
-                  <a className={styles.navLinkMobile}>
-                    Login <i className="bi bi-arrow-right"></i>
-                  </a>
-                </Link>
+                {status === "authenticated" ? (
+                  <div className="d-flex align-items-center justify-content-center">
+                    <ProfilePicture profileUrl={data.user?.image} name={data.user?.name} />
+                    <span>{data.user?.name}</span>
+                  </div>
+                ) : (
+                  <Link href="/login">
+                    <a className={styles.navLinkMobile}>
+                      Login <i className="bi bi-arrow-right"></i>
+                    </a>
+                  </Link>
+                )}
               </li>
             )}
           </ul>
