@@ -47,12 +47,15 @@ export const Navbar: FC = () => {
           </a>
         </Link>
         {router.pathname.startsWith("/manage") ? (
-          <div className={classNames(styles.buttonWrapper, "d-flex align-items-center")}>
-            <button className={styles.iconBtn}>
-              <i className="bi bi-bell"></i>
-            </button>
-            <button className={styles.profileBtn} style={{ backgroundImage: `url("${"/profile.png"}")` }}></button>
-          </div>
+          status !== "loading" &&
+          status === "authenticated" && (
+            <div className={classNames(styles.buttonWrapper, "d-flex align-items-center")}>
+              <button className={styles.iconBtn}>
+                <i className="bi bi-bell"></i>
+              </button>
+              <ProfilePicture profileUrl={data.user?.image} name={data.user?.name} />
+            </div>
+          )
         ) : (
           <ul className={classNames(styles.menuWrapper, "mb-0 d-flex align-items-center")}>
             {menus.map((el, i) => (
