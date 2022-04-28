@@ -5,7 +5,7 @@ import Link from "next/link";
 import { NextLinkButton } from ".";
 import { menus, manageMenus } from "content/menus";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { ProfilePicture } from "./ProfilePicture";
 
 export const Navbar: FC = () => {
@@ -34,6 +34,11 @@ export const Navbar: FC = () => {
         setOpenMenu(false);
       }, 250);
     }
+  };
+
+  const goSignOut: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault();
+    signOut();
   };
 
   return (
@@ -126,11 +131,9 @@ export const Navbar: FC = () => {
                     </li>
                   ))}
                   <li key={manageMenus.length} className="my-2">
-                    <Link href="/">
-                      <a className={classNames(styles.navLinkMobile, "text-center fs-13")}>
-                        Logout <i className="bi bi-arrow-right"></i>
-                      </a>
-                    </Link>
+                    <a href="#" className={classNames(styles.navLinkMobile, "text-center fs-13")} onClick={goSignOut}>
+                      Logout <i className="bi bi-arrow-right"></i>
+                    </a>
                   </li>
                 </ul>
               </li>
