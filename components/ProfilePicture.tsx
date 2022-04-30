@@ -45,7 +45,10 @@ export const ProfilePicture: FC<ProfilePictureProps> = ({ className, profileUrl,
             popupClassName
           )}
         >
-          {manageMenus.map((el) => (
+          {[
+            ...manageMenus,
+            { href: `/logout?redirect=${encodeURIComponent(window.location.href)}`, text: "Logout" },
+          ].map((el) => (
             <li key={el.text} className="list-unstyled m-0 p-0" onClick={() => setOpen(false)}>
               <Link href={el.href}>
                 <a
