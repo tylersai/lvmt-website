@@ -20,3 +20,29 @@
     text-transform: uppercase;
   }
 }
+
+.popupWrapper {
+  z-index: 1;
+  top: calc(100% + 8px);
+  right: 0;
+  border: 1px solid var(--sh-gray-lightest);
+  border-radius: 3px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+
+  & > li {
+    list-style: none;
+  }
+}
+
+.link {
+  color: var(--sh-gray);
+  transition: var(--transition);
+}
+.link:hover {
+  color: var(--bs-primary);
+  background-color: var(--sh-light);
+}
+
+.linkSelected {
+  color: var(--bs-primary);
+}
