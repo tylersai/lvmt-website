@@ -1,3 +1,5 @@
+import constants from "./constants";
+
 export const formatMoney = (
   num: number,
   minimumFractionDigits: number | undefined = 2,
@@ -34,3 +36,8 @@ export const getInitialsFromFullName = (fullName?: string | null) => {
 
   return initials.toUpperCase();
 };
+
+export const setAccessToken = (accessToken: string) =>
+  accessToken && localStorage.setItem(constants.ACCESS_TOKEN_KEY, accessToken);
+export const getAccessToken = () => localStorage.getItem(constants.ACCESS_TOKEN_KEY);
+export const removeAccessToken = () => localStorage.removeItem(constants.ACCESS_TOKEN_KEY);

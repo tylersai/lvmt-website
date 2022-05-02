@@ -4,6 +4,7 @@ import { PageLayout, ManageLayout, Button, Pagination } from "@components";
 import { formatMoney } from "@lib/functions";
 import styles from "@styles/TeamMembers.module.scss";
 import { useState } from "react";
+import useTeamMembers from "@hooks/api/useTeamMembers";
 
 interface Member {
   sid: string;
@@ -99,6 +100,7 @@ const dummyMembers: Member[] = [
 ];
 
 const TeamMembersPage: NextPage = () => {
+  const { teamMemberPage, loading, error } = useTeamMembers();
   const [teamMembers] = useState<Member[]>(dummyMembers);
 
   return (
@@ -172,6 +174,8 @@ const TeamMembersPage: NextPage = () => {
             <div className="d-flex justify-content-center pt-1 pb-4">
               <Pagination />
             </div>
+            <hr />
+            <pre>{JSON.stringify({ teamMemberPage, loading, error }, null, 4)}</pre>
           </div>
         </div>
       </ManageLayout>
