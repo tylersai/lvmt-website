@@ -3,13 +3,17 @@ import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { TokenServiceComponent } from "@components";
+import { Provider as ReduxProvider } from "react-redux";
+import store from "../redux/store";
 
 function MyApp({ Component, pageProps: { session, ...otherPageProps } }: AppProps) {
   return (
-    <SessionProvider session={session}>
-      <TokenServiceComponent />
-      <Component {...otherPageProps} />
-    </SessionProvider>
+    <ReduxProvider store={store}>
+      <SessionProvider session={session}>
+        <TokenServiceComponent />
+        <Component {...otherPageProps} />
+      </SessionProvider>
+    </ReduxProvider>
   );
 }
 
