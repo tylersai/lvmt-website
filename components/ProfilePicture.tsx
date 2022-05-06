@@ -6,6 +6,7 @@ import { getInitialsFromFullName } from "@lib/functions";
 import { manageMenus } from "content/menus";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { PopupWrapper } from "./PopupWrapper";
 
 interface ProfilePictureProps {
   className?: string;
@@ -25,9 +26,11 @@ export const ProfilePicture: FC<ProfilePictureProps> = ({ className, profileUrl,
   // const preventPopup: MouseEventHandler<HTMLDivElement> = (e) => e.stopPropagation();
 
   const initials = getInitialsFromFullName(name);
+  const togglerId = "profile-toggle-button";
   return (
     <div className="d-flex position-relative">
       <div
+        id={togglerId}
         className={classNames(
           className,
           styles.ProfilePicture,
@@ -38,12 +41,15 @@ export const ProfilePicture: FC<ProfilePictureProps> = ({ className, profileUrl,
         {profileUrl ? <img src={profileUrl} alt={initials || ""} /> : <span>{initials}</span>}
       </div>
       {!hidePopup && open && (
-        <ul
+        <PopupWrapper
           className={classNames(
             "position-absolute overflow-hidden bg-white m-0 px-0 py-2",
             styles.popupWrapper,
             popupClassName
           )}
+          open={open}
+          setOpen={setOpen}
+          exemptElementId={togglerId}
         >
           {[
             ...manageMenus,
@@ -63,7 +69,7 @@ export const ProfilePicture: FC<ProfilePictureProps> = ({ className, profileUrl,
               </Link>
             </li>
           ))}
-        </ul>
+        </PopupWrapper>
       )}
     </div>
   );
