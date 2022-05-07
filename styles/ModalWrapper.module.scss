@@ -15,6 +15,18 @@
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
 }
 
+.ModalHeader {
+  margin-top: -0.5rem;
+}
+
+.closeBtn {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  color: var(--sh-gray-dark);
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

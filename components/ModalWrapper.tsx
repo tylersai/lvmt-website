@@ -10,6 +10,7 @@ import React, {
 } from "react";
 import styles from "@styles/ModalWrapper.module.scss";
 import classNames from "classnames";
+import { Button } from "./";
 
 const sizeColumMap = {
   sm: "col-10 col-sm-8 col-md-6 col-lg-4",
@@ -24,6 +25,9 @@ interface ModalWrapperProps {
   overlayStyle?: CSSProperties;
   background?: "transparent" | "dim";
   size?: "sm" | "md" | "lg";
+  title?: string;
+  hideHeader?: boolean;
+  hideCloseBtn?: boolean;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -35,6 +39,9 @@ export const ModalWrapper: FC<ModalWrapperProps> = ({
   overlayStyle,
   background = "dim",
   size = "md",
+  title,
+  hideCloseBtn,
+  hideHeader,
   style,
   open,
   setOpen,
@@ -67,11 +74,31 @@ export const ModalWrapper: FC<ModalWrapperProps> = ({
       style={overlayStyle}
     >
       <div
-        className={classNames(styles.ModalWrapper, `bg-white p-3 p-md-4 ${sizeColumMap[size]}`, className)}
+        className={classNames(
+          styles.ModalWrapper,
+          `d-flex flex-column align-items-stretch bg-white p-3 p-md-4 ${sizeColumMap[size]}`,
+          className
+        )}
         onClick={stopClickPropagation}
         style={style}
+        role="dialog"
       >
-        {children}
+        {!hideHeader && !(hideCloseBtn && !title) && (
+          <div className={classNames(styles.ModalHeader, "row align-items-center mb-3")}>
+            <div className="col-2 col-md-1">
+              {!hideCloseBtn && (
+                <button className={styles.closeBtn} onClick={() => setOpen(false)}>
+                  <i className="bi bi-x-lg fs-14"></i>
+                </button>
+              )}
+            </div>
+            <div className="col-8 col-md-10">
+              <h6 className="text-center text-sh-gray-dark my-0">{title || ""}</h6>
+            </div>
+            <div className="col-2 col-md-1"></div>
+          </div>
+        )}
+        <div className={classNames(styles.ModalBody)}>{children}</div>
       </div>
     </div>
   );
