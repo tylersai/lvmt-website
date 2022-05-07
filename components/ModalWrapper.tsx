@@ -59,7 +59,7 @@ export const ModalWrapper: FC<ModalWrapperProps> = ({
       style={overlayStyle}
     >
       <div
-        className={classNames(styles.ModalWrapper, "box bg-white", className)}
+        className={classNames(styles.ModalWrapper, "bg-white p-3 p-md-4", className)}
         onClick={stopClickPropagation}
         style={style}
       >
