@@ -1,0 +1,15 @@
+.ModalOverlay {
+  z-index: 10;
+  left: calc(-1 * var(--bs-gutter-x, 0.75rem));
+  right: calc(-1 * var(--bs-gutter-x, 0.75rem));
+}
+.dim {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.transparent {
+  background-color: transparent;
+}
+.ModalWrapper {
+  border-radius: 3px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+}
