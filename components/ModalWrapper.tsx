@@ -11,12 +11,19 @@ import React, {
 import styles from "@styles/ModalWrapper.module.scss";
 import classNames from "classnames";
 
+const sizeColumMap = {
+  sm: "col-10 col-sm-8 col-md-6 col-lg-4",
+  md: "col-10 col-md-8 col-lg-6",
+  lg: "col-10 col-lg-8",
+};
+
 interface ModalWrapperProps {
   className?: string;
   style?: CSSProperties;
   overlayClassName?: string;
   overlayStyle?: CSSProperties;
   background?: "transparent" | "dim";
+  size?: "sm" | "md" | "lg";
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
@@ -27,6 +34,7 @@ export const ModalWrapper: FC<ModalWrapperProps> = ({
   overlayClassName,
   overlayStyle,
   background = "dim",
+  size = "md",
   style,
   open,
   setOpen,
@@ -59,7 +67,7 @@ export const ModalWrapper: FC<ModalWrapperProps> = ({
       style={overlayStyle}
     >
       <div
-        className={classNames(styles.ModalWrapper, "bg-white p-3 p-md-4", className)}
+        className={classNames(styles.ModalWrapper, `bg-white p-3 p-md-4 ${sizeColumMap[size]}`, className)}
         onClick={stopClickPropagation}
         style={style}
       >
