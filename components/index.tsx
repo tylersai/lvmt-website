@@ -13,4 +13,5 @@ export * from "./ManageLayout";
 export * from "./Pagination";
 export * from "./ProfilePicture";
 export * from "./TokenServiceComponent";
+export * from "./ConfigDataServiceComponent";
 export * from "./ModalWrapper";
