@@ -1,10 +1,11 @@
+import constants from "@lib/constants";
 import { getAccessToken } from "@lib/functions";
 import axios from "axios";
 import useSWR from "swr";
 import { PaginationRequestOptions } from "types/pagination";
 
 export const API_VER = "v1";
-export const BASE_URL = process.env.NEXT_PUBLIC_E360_API_URL || "";
+export const BASE_URL = constants.E360_V1_API_URL;
 const URL = "/staffs/paginate/employees";
 
 const fetcher = (url: string) => {
