@@ -1,10 +1,8 @@
 import axios from "axios";
 import { StaffTypeListAT } from "../actionTypes";
-import { getAccessToken } from "@lib/functions";
 import constants from "@lib/constants";
 
-export const getStaffTypeListAction = () => async (dispatch: any) => {
-  const accessToken = getAccessToken();
+export const getStaffTypeListAction = (accessToken: string) => async (dispatch: any) => {
   try {
     dispatch({ type: StaffTypeListAT.REQUEST });
 

@@ -1,10 +1,8 @@
 import axios from "axios";
 import { RoleTypeListAT } from "../actionTypes";
-import { getAccessToken } from "@lib/functions";
 import constants from "@lib/constants";
 
-export const getRoleTypeListAction = () => async (dispatch: any) => {
-  const accessToken = getAccessToken();
+export const getRoleTypeListAction = (accessToken: string) => async (dispatch: any) => {
   try {
     dispatch({ type: RoleTypeListAT.REQUEST });
 
