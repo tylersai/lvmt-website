@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import popupSlice from "./slice/popupSlice";
+import { staffTypeListReducer } from "./reducer/staffTypeReducer";
+import { roleTypeListReducer } from "./reducer/roleTypeReducer";
 
 const store = configureStore({
   reducer: {
-    popup: popupSlice,
+    staffTypeList: staffTypeListReducer,
+    roleTypeList: roleTypeListReducer,
   },
 });
 
