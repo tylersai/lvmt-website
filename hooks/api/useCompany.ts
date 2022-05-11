@@ -3,8 +3,8 @@ import axios from "axios";
 import useSWR from "swr";
 
 export const API_VER = "v2";
-export const BASE_URL = process.env.NEXT_PUBLIC_E360_API_URL || "";
-const URL = "/staffs/paginate/employees";
+export const BASE_URL = String(process.env.NEXT_PUBLIC_E360_API_URL).replace("v1", API_VER);
+const URL = "/website/companies";
 
 const fetcher = (url: string) => {
   const accessToken = getAccessToken();
@@ -28,7 +28,7 @@ const useCompany = () => {
     fetcher
   );
 
-  return { teamMemberPage: data, error, loading: !data && !error };
+  return { companyPage: data, error, loading: !data && !error };
 };
 
 export default useCompany;

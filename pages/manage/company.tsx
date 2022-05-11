@@ -1,8 +1,9 @@
 import { InputGroup, ManageLayout, PageLayout } from "@components";
+import useCompany from "@hooks/api/useCompany";
 import buttonStyles from "@styles/Button.module.scss";
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 
 interface Company {
   companySid: string;
@@ -24,7 +25,14 @@ const dummyCompany: Company = {
 };
 
 const CompanyPage: NextPage = () => {
-  const [company] = useState<Company | null | undefined>(dummyCompany);
+  const { companyPage, loading, error } = useCompany();
+  const [company, setCompany] = useState<Company | null | undefined>(
+    companyPage
+  );
+
+  useEffect(() => {
+    setCompany(companyPage);
+  }, [companyPage]);
 
   const goSave: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
@@ -65,6 +73,9 @@ const CompanyPage: NextPage = () => {
                 Save
               </button>
             </form>
+            <pre>
+              {JSON.stringify({ companyPage, loading, error }, null, 4)}
+            </pre>
           </div>
         </div>
       </ManageLayout>
