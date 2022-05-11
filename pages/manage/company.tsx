@@ -1,19 +1,26 @@
+import { InputGroup, ManageLayout, PageLayout } from "@components";
+import buttonStyles from "@styles/Button.module.scss";
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { PageLayout, ManageLayout, InputGroup } from "@components";
-import buttonStyles from "@styles/Button.module.scss";
 import { MouseEventHandler, useState } from "react";
 
 interface Company {
+  companySid: string;
   companyName: string;
-  brn: string;
-  tax: string;
+  taxRegistered: string;
+  businessRegistrationNumber: string;
+  themeName: string;
+  profilePicture?: string;
+  active: boolean;
 }
 
 const dummyCompany: Company = {
+  companySid: "",
   companyName: "ABC Law Firm Pte Ltd.",
-  brn: "123456789A",
-  tax: "123456789A",
+  businessRegistrationNumber: "123456789A",
+  taxRegistered: "123456789A",
+  active: true,
+  themeName: "light",
 };
 
 const CompanyPage: NextPage = () => {
@@ -39,19 +46,22 @@ const CompanyPage: NextPage = () => {
               />
               <InputGroup
                 className="pb-4"
-                defaultValue={company?.brn}
+                defaultValue={company?.businessRegistrationNumber}
                 label="Business Registration No."
                 inputType="text"
                 required
               />
               <InputGroup
                 className="pb-4"
-                defaultValue={company?.tax}
+                defaultValue={company?.taxRegistered}
                 label="Tax Registration No."
                 inputType="text"
                 required
               />
-              <button className={classNames(buttonStyles.Button_primary, "py-2")} onClick={goSave}>
+              <button
+                className={classNames(buttonStyles.Button_primary, "py-2")}
+                onClick={goSave}
+              >
                 Save
               </button>
             </form>
