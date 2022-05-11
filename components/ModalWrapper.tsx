@@ -10,7 +10,6 @@ import React, {
 } from "react";
 import styles from "@styles/ModalWrapper.module.scss";
 import classNames from "classnames";
-import { Button } from "./";
 
 const sizeColumMap = {
   sm: "col-10 col-sm-8 col-md-6 col-lg-4",
@@ -76,7 +75,7 @@ export const ModalWrapper: FC<ModalWrapperProps> = ({
       <div
         className={classNames(
           styles.ModalWrapper,
-          `d-flex flex-column align-items-stretch bg-white p-3 p-md-4 ${sizeColumMap[size]}`,
+          `d-flex flex-column align-items-stretch bg-white p-3 p-md-4 rounded ${sizeColumMap[size]}`,
           className
         )}
         onClick={stopClickPropagation}
@@ -98,7 +97,7 @@ export const ModalWrapper: FC<ModalWrapperProps> = ({
             <div className="col-2 col-md-1"></div>
           </div>
         )}
-        <div className={classNames(styles.ModalBody)}>{children}</div>
+        <div className={classNames(styles.ModalBody, "pt-2")}>{children}</div>
       </div>
     </div>
   );
