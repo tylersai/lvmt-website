@@ -29,7 +29,7 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit, className, s
           <InputGroup defaultValue="" label="Phone" inputType="text" />
         </div>
         <div className="col-6 col-lg-3">
-          <InputGroup defaultValue="" label="Global Hourly Rate" inputType="number" />
+          <InputGroup defaultValue={0.0} min={0} label="Global Hourly Rate" inputType="number" required />
         </div>
         <div className="col col-lg-6">
           <InputGroup defaultValue="" label="Email" inputType="email" required />
