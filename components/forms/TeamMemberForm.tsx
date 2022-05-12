@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { InputGroup } from "@components";
+import { InputGroup, SelectGroup } from "@components";
 import { CSSProperties, FC, FormEventHandler } from "react";
 import buttonStyles from "@styles/Button.module.scss";
 import { useSelector } from "react-redux";
@@ -12,16 +12,9 @@ interface TeamMemberFormProps {
 }
 
 export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit, className, style }) => {
-  const {
-    loading: roleTypeListLoading,
-    data: roleTypeListData,
-    error: roleTypeListError,
-  } = useSelector<any, CommonSelectorType>((state) => state.roleTypeList);
-  const {
-    loading: staffTypeListLoading,
-    data: staffTypeListData,
-    error: staffTypeListError,
-  } = useSelector<any, CommonSelectorType>((state) => state.staffTypeList);
+  const { data: roleTypeListData } = useSelector<any, CommonSelectorType>((state) => state.roleTypeList);
+  const { data: staffTypeListData } = useSelector<any, CommonSelectorType>((state) => state.staffTypeList);
+
   return (
     <form className={classNames("TeamMemberForm", className)} style={style} onSubmit={onSubmit}>
       <div className="row g-3">
@@ -44,33 +37,10 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit, className, s
           <InputGroup defaultValue={0.0} min={0} label="Global Hourly Rate" inputType="number" required />
         </div>
         <div className="col col-lg-6">
-          <label htmlFor="accessRole">Access Role (Role Type)</label>
-          <select className="form-select form-select-sm" id="accessRole">
-            {!roleTypeListLoading &&
-              !roleTypeListError &&
-              roleTypeListData &&
-              roleTypeListData.map((el) => (
-                <option key={el.id} value={el.id} disabled={el.active !== undefined && !el.active}>
-                  {el.value}
-                </option>
-              ))}
-          </select>
+          <SelectGroup label="Access Role (Role Type)" options={roleTypeListData || []} required />
         </div>
         <div className="col col-lg-6">
-          <label htmlFor="position">Position (Staff Type)</label>
-          <select className="form-select form-select-sm" id="position">
-            {!staffTypeListLoading &&
-              !staffTypeListError &&
-              staffTypeListData &&
-              staffTypeListData.map((el) => (
-                <option key={el.id} value={el.id} disabled={el.active !== undefined && !el.active}>
-                  {el.value}
-                </option>
-              ))}
-          </select>
-        </div>
-        <div className="col col-lg-6">
-          <InputGroup defaultValue="" label="Email" inputType="email" required />
+          <SelectGroup label="Position (Staff Type)" options={staffTypeListData || []} required />
         </div>
         <div className="col col-lg-6">
           <InputGroup defaultValue="" label="Password" inputType="password" required />
