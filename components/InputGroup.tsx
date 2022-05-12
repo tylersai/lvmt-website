@@ -18,6 +18,9 @@ interface InputGroupProps {
   labelClassName?: string | undefined;
   inputClassName?: string | undefined;
   messageClassName?: string | undefined;
+  min?: number | string;
+  max?: number | string;
+  step?: number | string;
 }
 
 export const InputGroup: FC<InputGroupProps> = ({
@@ -37,6 +40,9 @@ export const InputGroup: FC<InputGroupProps> = ({
   labelClassName,
   inputClassName,
   messageClassName,
+  min,
+  max,
+  step,
 }) => {
   const randStr = useMemo(() => `input_id_${Math.random().toString().substring(2, 6)}`, []);
 
@@ -67,6 +73,9 @@ export const InputGroup: FC<InputGroupProps> = ({
         onFocus={onFocus}
         placeholder={placeholder}
         disabled={disabled}
+        min={min}
+        max={max}
+        step={step}
       />
       {message && <small className={classNames("position-absolute fs-10 fw-400", messageClassName)}>{message}</small>}
     </div>
