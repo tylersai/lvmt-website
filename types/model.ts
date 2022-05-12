@@ -1,4 +1,8 @@
-import { CommonType } from "./pagination";
+export type CommonType = {
+  id: string;
+  value: string;
+  active?: boolean;
+};
 
 export interface TeamMember {
   personSid: string;

@@ -4,12 +4,6 @@ export interface PaginationRequestOptions {
   showArchivedData?: boolean;
 }
 
-export type CommonType = {
-  id: string;
-  value: string;
-  active?: boolean;
-};
-
 export type PageSort = {
   sorted: boolean;
   unsorted: boolean;
