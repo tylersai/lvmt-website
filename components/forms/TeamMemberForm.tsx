@@ -13,22 +13,22 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit, className, s
   return (
     <form className={classNames("TeamMemberForm", className)} style={style} onSubmit={onSubmit}>
       <div className="row g-3">
-        <div className="col col-lg-6">
-          <InputGroup defaultValue="" label="First Name" inputType="text" required />
-        </div>
-        <div className="col col-lg-6">
-          <InputGroup defaultValue="" label="Last Name" inputType="text" required />
-        </div>
-        <div className="col-6 col-lg-3">
+        <div className="col-6 col-lg-2">
           <InputGroup defaultValue="" label="Salutation" inputType="text" required />
         </div>
-        <div className="col-6 col-lg-3">
+        <div className="col col-lg-5">
+          <InputGroup defaultValue="" label="First Name" inputType="text" required />
+        </div>
+        <div className="col col-lg-5">
+          <InputGroup defaultValue="" label="Last Name" inputType="text" required />
+        </div>
+        <div className="col-6 col-lg-2">
           <InputGroup defaultValue="" label="Initials" inputType="text" required />
         </div>
-        <div className="col-6 col-lg-3">
+        <div className="col-6 col-lg-5">
           <InputGroup defaultValue="" label="Phone" inputType="text" />
         </div>
-        <div className="col-6 col-lg-3">
+        <div className="col-6 col-lg-5">
           <InputGroup defaultValue={0.0} min={0} label="Global Hourly Rate" inputType="number" required />
         </div>
         <div className="col col-lg-6">
