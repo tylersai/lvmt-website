@@ -1,10 +1,10 @@
-.InputGroup {
+.SelectGroup {
   gap: 6px;
   & > label {
     font-size: 12px;
     font-weight: 500;
   }
-  & > input {
+  & > select {
     outline: none;
     box-shadow: none;
     border: 2px solid var(--sh-gray-light);
@@ -12,20 +12,18 @@
     transition: all 120ms ease-out;
     padding: 6px 14px;
     font-size: 14px;
+    font-weight: 400;
     color: var(--sh-gray-dark);
+    & > option {
+      font-size: 14px;
+      font-weight: 400;
+    }
   }
-  & > input[type="password"] {
-    letter-spacing: 4px;
-  }
-  & > input:focus {
+  & > select:focus {
     border-color: var(--bs-blue-200);
     box-shadow: none !important;
   }
-  & > input::placeholder {
-    opacity: 0.5;
-    letter-spacing: normal;
-  }
-  & > input:disabled {
+  & > select:disabled {
     opacity: 1;
   }
   & > small {
@@ -36,8 +34,8 @@
   }
 }
 
-.InputGroup_error {
-  & > input {
+.SelectGroup_error {
+  & > select {
     border-color: var(--bs-pink-300);
   }
   & > small {
