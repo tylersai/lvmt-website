@@ -9,3 +9,9 @@ export const RoleTypeListAT = {
   SUCCESS: "ROLE_TYPE_LIST_SUCCESS",
   FAIL: "ROLE_TYPE_LIST_FAIL",
 };
+
+export const SalutationListAT = {
+  REQUEST: "SALUTATION_LIST_REQUEST",
+  SUCCESS: "SALUTATION_LIST_SUCCESS",
+  FAIL: "SALUTATION_LIST_FAIL",
+};

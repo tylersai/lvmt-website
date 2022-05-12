@@ -1,16 +1,16 @@
 import { Reducer } from "@reduxjs/toolkit";
 import { CommonSelectorType } from "types/redux";
-import { StaffTypeListAT } from "../actionTypes";
+import { SalutationListAT } from "../actionTypes";
 
-export const staffTypeListReducer: Reducer = (state: CommonSelectorType = { data: [], loading: false }, action) => {
+export const salutationListReducer: Reducer = (state: CommonSelectorType = { data: [], loading: false }, action) => {
   switch (action.type) {
-    case StaffTypeListAT.REQUEST:
+    case SalutationListAT.REQUEST:
       return { loading: true, data: [] };
 
-    case StaffTypeListAT.SUCCESS:
+    case SalutationListAT.SUCCESS:
       return { loading: false, data: action.payload };
 
-    case StaffTypeListAT.FAIL:
+    case SalutationListAT.FAIL:
       return { loading: false, error: action.payload };
 
     default:
