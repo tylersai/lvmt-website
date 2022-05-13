@@ -43,6 +43,9 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit, className, s
           <SelectGroup label="Position (Staff Type)" options={staffTypeListData || []} required />
         </div>
         <div className="col col-lg-6">
+          <InputGroup defaultValue="" label="Email" inputType="email" required />
+        </div>
+        <div className="col col-lg-6">
           <InputGroup defaultValue="" label="Password" inputType="password" required />
         </div>
         <div className="col-12 d-flex justify-content-end">
