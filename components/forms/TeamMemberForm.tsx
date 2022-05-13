@@ -14,12 +14,13 @@ interface TeamMemberFormProps {
 export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit, className, style }) => {
   const { data: roleTypeListData } = useSelector<any, CommonSelectorType>((state) => state.roleTypeList);
   const { data: staffTypeListData } = useSelector<any, CommonSelectorType>((state) => state.staffTypeList);
+  const { data: salutationListData } = useSelector<any, CommonSelectorType>((state) => state.salutationList);
 
   return (
     <form className={classNames("TeamMemberForm", className)} style={style} onSubmit={onSubmit}>
       <div className="row g-3">
         <div className="col-6 col-lg-2">
-          <InputGroup defaultValue="" label="Salutation" inputType="text" required />
+          <SelectGroup label="Salutation" options={salutationListData || []} required />
         </div>
         <div className="col col-lg-5">
           <InputGroup defaultValue="" label="First Name" inputType="text" required />
