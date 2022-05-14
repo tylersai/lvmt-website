@@ -20,34 +20,41 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit = (e) => e.pr
     <form className={classNames("TeamMemberForm", className)} style={style} onSubmit={onSubmit}>
       <div className="row g-3">
         <div className="col-6 col-lg-2">
-          <SelectGroup label="Salutation" options={salutationListData || []} required />
+          <SelectGroup name="salutation" label="Salutation" options={salutationListData || []} required />
         </div>
         <div className="col col-lg-5">
-          <InputGroup defaultValue="" label="First Name" inputType="text" required />
+          <InputGroup name="firstName" defaultValue="" label="First Name" inputType="text" required />
         </div>
         <div className="col col-lg-5">
-          <InputGroup defaultValue="" label="Last Name" inputType="text" required />
+          <InputGroup name="lastName" defaultValue="" label="Last Name" inputType="text" required />
         </div>
         <div className="col-6 col-lg-2">
-          <InputGroup defaultValue="" label="Initials" inputType="text" required />
+          <InputGroup name="initials" defaultValue="" label="Initials" inputType="text" required />
         </div>
         <div className="col-6 col-lg-5">
-          <InputGroup defaultValue="" label="Phone" inputType="text" />
+          <InputGroup name="phone" defaultValue="" label="Phone" inputType="text" />
         </div>
         <div className="col-6 col-lg-5">
-          <InputGroup defaultValue={0.0} min={0} label="Global Hourly Rate" inputType="number" required />
+          <InputGroup
+            name="globalHourlyRate"
+            defaultValue={0.0}
+            min={0}
+            label="Global Hourly Rate"
+            inputType="number"
+            required
+          />
         </div>
         <div className="col col-lg-6">
-          <SelectGroup label="Access Role (Role Type)" options={roleTypeListData || []} required />
+          <SelectGroup name="roleType" label="Access Role (Role Type)" options={roleTypeListData || []} required />
         </div>
         <div className="col col-lg-6">
-          <SelectGroup label="Position (Staff Type)" options={staffTypeListData || []} required />
+          <SelectGroup name="staffType" label="Position (Staff Type)" options={staffTypeListData || []} required />
         </div>
         <div className="col col-lg-6">
-          <InputGroup defaultValue="" label="Email" inputType="email" required />
+          <InputGroup name="email" defaultValue="" label="Email" inputType="email" required />
         </div>
         <div className="col col-lg-6">
-          <InputGroup defaultValue="" label="Password" inputType="password" required />
+          <InputGroup name="password" defaultValue="" label="Password" inputType="password" required />
         </div>
         <div className="col-12 d-flex justify-content-end">
           <input type="submit" value="Create" className={classNames(buttonStyles.Button_primary, "py-2 mt-1")} />
