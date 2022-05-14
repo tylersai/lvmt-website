@@ -2,7 +2,10 @@ import { Reducer } from "@reduxjs/toolkit";
 import { CommonSelectorType } from "types/redux";
 import { SalutationListAT } from "../actionTypes";
 
-export const salutationListReducer: Reducer = (state: CommonSelectorType = { data: [], loading: false }, action) => {
+export const salutationListReducer: Reducer<CommonSelectorType> = (
+  state: CommonSelectorType = { data: [], loading: false },
+  action
+) => {
   switch (action.type) {
     case SalutationListAT.REQUEST:
       return { loading: true, data: [] };
