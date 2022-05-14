@@ -11,7 +11,7 @@ interface TeamMemberFormProps {
   onSubmit?: FormEventHandler<HTMLFormElement>;
 }
 
-export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit, className, style }) => {
+export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit = (e) => e.preventDefault(), className, style }) => {
   const { data: roleTypeListData } = useSelector<any, CommonSelectorType>((state) => state.roleTypeList);
   const { data: staffTypeListData } = useSelector<any, CommonSelectorType>((state) => state.staffTypeList);
   const { data: salutationListData } = useSelector<any, CommonSelectorType>((state) => state.salutationList);
