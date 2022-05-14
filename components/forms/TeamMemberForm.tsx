@@ -3,7 +3,7 @@ import { InputGroup, SelectGroup } from "@components";
 import { CSSProperties, FC, FormEventHandler } from "react";
 import buttonStyles from "@styles/Button.module.scss";
 import { useSelector } from "react-redux";
-import { CommonSelectorType } from "types/redux";
+import { CommonSelectorType, RootState } from "types/redux";
 
 interface TeamMemberFormProps {
   className?: string;
@@ -12,9 +12,9 @@ interface TeamMemberFormProps {
 }
 
 export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit = (e) => e.preventDefault(), className, style }) => {
-  const { data: roleTypeListData } = useSelector<any, CommonSelectorType>((state) => state.roleTypeList);
-  const { data: staffTypeListData } = useSelector<any, CommonSelectorType>((state) => state.staffTypeList);
-  const { data: salutationListData } = useSelector<any, CommonSelectorType>((state) => state.salutationList);
+  const { data: roleTypeListData } = useSelector<RootState, CommonSelectorType>((state) => state.roleTypeList);
+  const { data: staffTypeListData } = useSelector<RootState, CommonSelectorType>((state) => state.staffTypeList);
+  const { data: salutationListData } = useSelector<RootState, CommonSelectorType>((state) => state.salutationList);
 
   return (
     <form className={classNames("TeamMemberForm", className)} style={style} onSubmit={onSubmit}>
