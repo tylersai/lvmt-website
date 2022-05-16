@@ -1,10 +1,11 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { PageLayout, ManageLayout, Button, Pagination } from "@components";
+import { PageLayout, ManageLayout, Button, Pagination, ModalWrapper } from "@components";
 import { formatMoney } from "@lib/functions";
 import styles from "@styles/TeamMembers.module.scss";
-import { useState } from "react";
+import { MouseEventHandler, useCallback, useState } from "react";
 import useTeamMembers from "@hooks/api/useTeamMembers";
+import { TeamMemberForm } from "components/forms";
 
 interface Member {
   sid: string;
@@ -102,6 +103,12 @@ const dummyMembers: Member[] = [
 const TeamMembersPage: NextPage = () => {
   const { teamMemberPage, loading, error } = useTeamMembers();
   const [teamMembers] = useState<Member[]>(dummyMembers);
+  const [openNewMember, setOpenNewMember] = useState<boolean>(false);
+
+  const openNewMemberModal = useCallback<MouseEventHandler<HTMLButtonElement>>(
+    () => setOpenNewMember(true),
+    [setOpenNewMember]
+  );
 
   return (
     <PageLayout>
@@ -109,7 +116,7 @@ const TeamMembersPage: NextPage = () => {
         <div className="row">
           <div className="col-12">
             <div className="d-flex justify-content-end">
-              <Button className="py-2" icon="plus-lg" iconPlacement="left" variant="naked">
+              <Button className="py-2" icon="plus-lg" iconPlacement="left" variant="naked" onClick={openNewMemberModal}>
                 New Member
               </Button>
             </div>
@@ -179,6 +186,15 @@ const TeamMembersPage: NextPage = () => {
           </div>
         </div>
       </ManageLayout>
+      <ModalWrapper open={openNewMember} setOpen={setOpenNewMember} title="Add New Member">
+        <TeamMemberForm
+          onSubmit={(e) => {
+            e.preventDefault();
+            const teamMember = Object.fromEntries(new FormData(e.currentTarget));
+            console.log({ teamMember });
+          }}
+        />
+      </ModalWrapper>
     </PageLayout>
   );
 };

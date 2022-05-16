@@ -1,36 +1,31 @@
 import classNames from "classnames";
-import { ChangeEventHandler, CSSProperties, FC, FocusEventHandler, HTMLInputTypeAttribute, useMemo } from "react";
-import styles from "@styles/InputGroup.module.scss";
+import { ChangeEventHandler, CSSProperties, FC, FocusEventHandler, useMemo } from "react";
+import styles from "@styles/SelectGroup.module.scss";
+import { CommonType } from "types/model";
 
-interface InputGroupProps {
+interface SelectGroupProps {
   name?: string | undefined;
   className?: string | undefined;
   label?: string | undefined;
   message?: string | undefined;
-  placeholder?: string | undefined;
-  inputType?: HTMLInputTypeAttribute | undefined;
   defaultValue?: string | number | readonly string[] | undefined;
   value?: string | number | readonly string[] | undefined;
-  onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
-  onFocus?: FocusEventHandler<HTMLInputElement> | undefined;
+  onChange?: ChangeEventHandler<HTMLSelectElement> | undefined;
+  onFocus?: FocusEventHandler<HTMLSelectElement> | undefined;
   style?: CSSProperties | undefined;
   required?: boolean | undefined;
   disabled?: boolean | undefined;
   labelClassName?: string | undefined;
-  inputClassName?: string | undefined;
+  selectClassName?: string | undefined;
   messageClassName?: string | undefined;
-  min?: number | string;
-  max?: number | string;
-  step?: number | string;
+  options: CommonType[];
 }
 
-export const InputGroup: FC<InputGroupProps> = ({
+export const SelectGroup: FC<SelectGroupProps> = ({
   name,
   className,
   label,
   message,
-  placeholder,
-  inputType,
   value,
   defaultValue,
   onChange,
@@ -39,21 +34,19 @@ export const InputGroup: FC<InputGroupProps> = ({
   required,
   disabled,
   labelClassName,
-  inputClassName,
+  selectClassName,
   messageClassName,
-  min,
-  max,
-  step,
+  options = [],
 }) => {
-  const randStr = useMemo(() => `input_id_${Math.random().toString().substring(2, 6)}`, []);
+  const randStr = useMemo(() => `select_id_${Math.random().toString().substring(2, 6)}`, []);
 
   return (
     <div
       className={classNames(
         "d-flex flex-column align-items-stretch position-relative",
-        styles.InputGroup,
+        styles.SelectGroup,
         className,
-        message && styles.InputGroup_error
+        message && styles.SelectGroup_error
       )}
       style={style}
     >
@@ -63,21 +56,22 @@ export const InputGroup: FC<InputGroupProps> = ({
           {required && " *"}
         </label>
       )}
-      <input
-        className={inputClassName}
+      <select
+        className={classNames("form-select form-select-sm", selectClassName)}
         defaultValue={defaultValue}
         name={name}
         id={randStr}
-        type={inputType}
         value={value}
         onChange={onChange}
         onFocus={onFocus}
-        placeholder={placeholder}
         disabled={disabled}
-        min={min}
-        max={max}
-        step={step}
-      />
+      >
+        {options.map((el) => (
+          <option key={el.id} value={el.id} disabled={el.active !== undefined && !el.active}>
+            {el.value}
+          </option>
+        ))}
+      </select>
       {message && <small className={classNames("position-absolute fs-10 fw-400", messageClassName)}>{message}</small>}
     </div>
   );
