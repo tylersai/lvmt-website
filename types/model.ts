@@ -20,3 +20,13 @@ export interface TeamMember {
   autoAssignNewCase?: boolean;
   lastLogin?: string | null;
 }
+
+export interface Company {
+  companySid?: string;
+  companyName: string;
+  taxRegistered: string;
+  businessRegistrationNumber: string;
+  themeName: string;
+  profilePicture?: string;
+  active: boolean;
+}

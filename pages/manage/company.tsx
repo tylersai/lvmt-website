@@ -4,31 +4,11 @@ import buttonStyles from "@styles/Button.module.scss";
 import classNames from "classnames";
 import type { NextPage } from "next";
 import { MouseEventHandler, useEffect, useState } from "react";
-
-interface Company {
-  companySid: string;
-  companyName: string;
-  taxRegistered: string;
-  businessRegistrationNumber: string;
-  themeName: string;
-  profilePicture?: string;
-  active: boolean;
-}
-
-const dummyCompany: Company = {
-  companySid: "",
-  companyName: "ABC Law Firm Pte Ltd.",
-  businessRegistrationNumber: "123456789A",
-  taxRegistered: "123456789A",
-  active: true,
-  themeName: "light",
-};
+import { Company } from "types/model";
 
 const CompanyPage: NextPage = () => {
-  const { companyPage, loading, error } = useCompany();
-  const [company, setCompany] = useState<Company | null | undefined>(
-    companyPage
-  );
+  const { companyPage, saveCompany } = useCompany();
+  const [company, setCompany] = useState<Company>(companyPage);
 
   useEffect(() => {
     setCompany(companyPage);
@@ -36,8 +16,15 @@ const CompanyPage: NextPage = () => {
 
   const goSave: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    alert("Feature coming soon...");
+    console.log("save company", company);
+    saveCompany(company);
   };
+
+  function _onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setCompany({ ...company, [name]: value });
+  }
 
   return (
     <PageLayout>
@@ -46,25 +33,31 @@ const CompanyPage: NextPage = () => {
           <div className="col-lg-6 px-3 px-md-4 px-lg-5">
             <form>
               <InputGroup
+                name="companyName"
                 className="pb-4"
-                defaultValue={company?.companyName}
+                value={company?.companyName}
                 label="Company Name"
                 inputType="text"
                 required
+                onChange={_onChange}
               />
               <InputGroup
+                name="businessRegistrationNumber"
                 className="pb-4"
-                defaultValue={company?.businessRegistrationNumber}
+                value={company?.businessRegistrationNumber}
                 label="Business Registration No."
                 inputType="text"
                 required
+                onChange={_onChange}
               />
               <InputGroup
+                name="taxRegistered"
                 className="pb-4"
-                defaultValue={company?.taxRegistered}
+                value={company?.taxRegistered}
                 label="Tax Registration No."
                 inputType="text"
                 required
+                onChange={_onChange}
               />
               <button
                 className={classNames(buttonStyles.Button_primary, "py-2")}
@@ -73,9 +66,7 @@ const CompanyPage: NextPage = () => {
                 Save
               </button>
             </form>
-            <pre>
-              {JSON.stringify({ companyPage, loading, error }, null, 4)}
-            </pre>
+            {/* <pre>{JSON.stringify({ company }, null, 4)}</pre> */}
           </div>
         </div>
       </ManageLayout>
