@@ -187,13 +187,7 @@ const TeamMembersPage: NextPage = () => {
         </div>
       </ManageLayout>
       <ModalWrapper open={openNewMember} setOpen={setOpenNewMember} title="Add New Member">
-        <TeamMemberForm
-          onSubmit={(e) => {
-            e.preventDefault();
-            const teamMember = Object.fromEntries(new FormData(e.currentTarget));
-            console.log({ teamMember });
-          }}
-        />
+        <TeamMemberForm />
       </ModalWrapper>
     </PageLayout>
   );

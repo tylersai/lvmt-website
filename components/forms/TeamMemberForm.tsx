@@ -7,15 +7,22 @@ import { CommonSelectorType } from "types/redux";
 import { RootState } from "redux/store";
 import { TeamMemberForm as TeamMemberFormType } from "types/model";
 import { TeamMemberFormAT } from "redux/actionTypes";
+import axios from "axios";
+import constants from "@lib/constants";
+import { useSession } from "next-auth/react";
+import { useSWRConfig } from "swr";
+import { KEY } from "@hooks/api/useTeamMembers";
 
 interface TeamMemberFormProps {
   className?: string;
   style?: CSSProperties;
-  onSubmit?: FormEventHandler<HTMLFormElement>;
+  // onSubmit?: FormEventHandler<HTMLFormElement>;
 }
 
-export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit = (e) => e.preventDefault(), className, style }) => {
+export const TeamMemberForm: FC<TeamMemberFormProps> = ({ className, style }) => {
   const dispatch = useDispatch();
+  const { mutate } = useSWRConfig();
+  const { data: session } = useSession();
   const { data: roleTypeListData } = useSelector<RootState, CommonSelectorType>((state) => state.roleTypeList);
   const { data: staffTypeListData } = useSelector<RootState, CommonSelectorType>((state) => state.staffTypeList);
   const { data: salutationListData } = useSelector<RootState, CommonSelectorType>((state) => state.salutationList);
@@ -35,8 +42,27 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit = (e) => e.pr
   const changeHandler: ChangeEventHandler<HTMLInputElement | HTMLSelectElement> = (e) =>
     dispatch({ type: TeamMemberFormAT.CHANGE, payload: { [e.target.name]: e.target.value } });
 
+  const saveTeamMember: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    // const teamMember = Object.fromEntries(new FormData(e.currentTarget));
+    // console.log({ teamMember });
+    const url = constants.E360_V1_API_URL + "/staffs";
+    axios
+      .post(url, teamMember, {
+        headers: {
+          Authorization: `Bearer ${session?.accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        dispatch({ type: TeamMemberFormAT.DEFAULT });
+        mutate(KEY);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <form className={classNames("TeamMemberForm", className)} style={style} onSubmit={onSubmit}>
+    <form className={classNames("TeamMemberForm", className)} style={style} onSubmit={saveTeamMember}>
       <div className="row g-3">
         <div className="col-6 col-lg-2">
           <SelectGroup
