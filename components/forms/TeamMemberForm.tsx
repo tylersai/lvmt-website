@@ -17,6 +17,13 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit = (e) => e.pr
   const { data: staffTypeListData } = useSelector<RootState, CommonSelectorType>((state) => state.staffTypeList);
   const { data: salutationListData } = useSelector<RootState, CommonSelectorType>((state) => state.salutationList);
 
+  const filteredRoleTypes =
+    roleTypeListData && roleTypeListData.length > 0
+      ? roleTypeListData.filter(
+          (el) => el.value !== "Company Admin" && el.value !== "Admin/Manager" && el.value !== "Portal Admin"
+        )
+      : [];
+
   return (
     <form className={classNames("TeamMemberForm", className)} style={style} onSubmit={onSubmit}>
       <div className="row g-3">
@@ -46,7 +53,7 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ onSubmit = (e) => e.pr
           />
         </div>
         <div className="col col-lg-6">
-          <SelectGroup name="roleType" label="Access Role (Role Type)" options={roleTypeListData || []} required />
+          <SelectGroup name="roleType" label="Access Role (Role Type)" options={filteredRoleTypes} required />
         </div>
         <div className="col col-lg-6">
           <SelectGroup name="staffType" label="Position (Staff Type)" options={staffTypeListData || []} required />
