@@ -3,7 +3,8 @@ import { InputGroup, SelectGroup } from "@components";
 import { CSSProperties, FC, FormEventHandler } from "react";
 import buttonStyles from "@styles/Button.module.scss";
 import { useSelector } from "react-redux";
-import { CommonSelectorType, RootState } from "types/redux";
+import { CommonSelectorType } from "types/redux";
+import { RootState } from "redux/store";
 
 interface TeamMemberFormProps {
   className?: string;
