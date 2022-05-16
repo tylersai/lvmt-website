@@ -19,6 +19,7 @@ export interface TeamMember {
   active: boolean;
   autoAssignNewCase?: boolean;
   lastLogin?: string | null;
+  profile?: string | null;
 }
 
 export interface TeamMemberForm {

@@ -7,7 +7,7 @@ export const formatMoney = (
   minimumIntegerDigits: number | undefined = undefined
 ): string => num.toLocaleString("us", { useGrouping, minimumIntegerDigits, minimumFractionDigits });
 
-export const getInitials = (firstName: string, lastName: string | null) => {
+export const getInitials = (firstName: string, lastName?: string | null) => {
   let initials = "";
   initials += firstName.trim()[0];
   if (lastName && lastName.trim()) {
