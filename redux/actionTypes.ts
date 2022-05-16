@@ -15,3 +15,8 @@ export const SalutationListAT = {
   SUCCESS: "SALUTATION_LIST_SUCCESS",
   FAIL: "SALUTATION_LIST_FAIL",
 };
+
+export const TeamMemberFormAT = {
+  DEFAULT: "TEAM_MEMBER_FORM_DEFAULT",
+  CHANGE: "TEAM_MEMBER_FORM_CHANGE",
+};
