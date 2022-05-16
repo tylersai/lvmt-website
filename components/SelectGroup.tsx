@@ -19,6 +19,7 @@ interface SelectGroupProps {
   selectClassName?: string | undefined;
   messageClassName?: string | undefined;
   options: CommonType[];
+  hideEmptyOption?: boolean;
 }
 
 export const SelectGroup: FC<SelectGroupProps> = ({
@@ -37,6 +38,7 @@ export const SelectGroup: FC<SelectGroupProps> = ({
   selectClassName,
   messageClassName,
   options = [],
+  hideEmptyOption,
 }) => {
   const randStr = useMemo(() => `select_id_${Math.random().toString().substring(2, 6)}`, []);
 
@@ -66,6 +68,11 @@ export const SelectGroup: FC<SelectGroupProps> = ({
         onFocus={onFocus}
         disabled={disabled}
       >
+        {!hideEmptyOption && (
+          <option key={""} value="">
+            Select...
+          </option>
+        )}
         {options.map((el) => (
           <option key={el.id} value={el.id} disabled={el.active !== undefined && !el.active}>
             {el.value}
