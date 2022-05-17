@@ -118,6 +118,8 @@ const TeamMembersPage: NextPage = () => {
     [setOpenNewMember]
   );
 
+  const closeNewMemberModal = () => setOpenNewMember(false);
+
   return (
     <PageLayout>
       <ManageLayout title="Manage Team Members">
@@ -203,7 +205,7 @@ const TeamMembersPage: NextPage = () => {
         </div>
       </ManageLayout>
       <ModalWrapper open={openNewMember} setOpen={setOpenNewMember} title="Add New Member">
-        <TeamMemberForm />
+        <TeamMemberForm onSubmitSuccess={closeNewMemberModal} />
       </ModalWrapper>
     </PageLayout>
   );

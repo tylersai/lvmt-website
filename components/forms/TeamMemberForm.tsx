@@ -16,10 +16,12 @@ import { KEY } from "@hooks/api/useTeamMembers";
 interface TeamMemberFormProps {
   className?: string;
   style?: CSSProperties;
+  onSubmitSuccess?: () => void;
+  onSubmitError?: () => void;
   // onSubmit?: FormEventHandler<HTMLFormElement>;
 }
 
-export const TeamMemberForm: FC<TeamMemberFormProps> = ({ className, style }) => {
+export const TeamMemberForm: FC<TeamMemberFormProps> = ({ className, style, onSubmitSuccess }) => {
   const dispatch = useDispatch();
   const { mutate } = useSWRConfig();
   const { data: session } = useSession();
@@ -55,10 +57,14 @@ export const TeamMemberForm: FC<TeamMemberFormProps> = ({ className, style }) =>
       })
       .then((res) => {
         console.log(res.data);
+        onSubmitSuccess && onSubmitSuccess();
         dispatch({ type: TeamMemberFormAT.DEFAULT });
         mutate(KEY);
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        console.log(error);
+        alert((error.response && error.response.data.message) || error.message);
+      });
   };
 
   return (
