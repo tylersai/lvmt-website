@@ -19,6 +19,21 @@ export interface TeamMember {
   active: boolean;
   autoAssignNewCase?: boolean;
   lastLogin?: string | null;
+  profile?: string | null;
+}
+
+export interface TeamMemberForm {
+  personSid?: string | null;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  initials: string;
+  phone?: string | null;
+  roleType: string;
+  staffType: string;
+  salutation: string;
+  globalHourlyRate: number;
 }
 
 export interface Company {

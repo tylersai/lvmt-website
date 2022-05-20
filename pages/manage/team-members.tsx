@@ -1,11 +1,15 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
 import { PageLayout, ManageLayout, Button, Pagination, ModalWrapper } from "@components";
-import { formatMoney } from "@lib/functions";
+import { formatMoney, getInitials } from "@lib/functions";
 import styles from "@styles/TeamMembers.module.scss";
 import { MouseEventHandler, useCallback, useState } from "react";
 import useTeamMembers from "@hooks/api/useTeamMembers";
 import { TeamMemberForm } from "components/forms";
+import { RootState } from "redux/store";
+import { CommonSelectorType } from "types/redux";
+import { useSelector } from "react-redux";
+import { useSession } from "next-auth/react";
 
 interface Member {
   sid: string;
@@ -101,6 +105,10 @@ const dummyMembers: Member[] = [
 ];
 
 const TeamMembersPage: NextPage = () => {
+  const { data: session } = useSession();
+  const { data: roleTypeList } = useSelector<RootState, CommonSelectorType>((state) => state.roleTypeList);
+  const { data: staffTypeList } = useSelector<RootState, CommonSelectorType>((state) => state.staffTypeList);
+
   const { teamMemberPage, loading, error } = useTeamMembers();
   const [teamMembers] = useState<Member[]>(dummyMembers);
   const [openNewMember, setOpenNewMember] = useState<boolean>(false);
@@ -109,6 +117,8 @@ const TeamMembersPage: NextPage = () => {
     () => setOpenNewMember(true),
     [setOpenNewMember]
   );
+
+  const closeNewMemberModal = () => setOpenNewMember(false);
 
   return (
     <PageLayout>
@@ -135,10 +145,11 @@ const TeamMembersPage: NextPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {teamMembers &&
-                    teamMembers.length > 0 &&
-                    teamMembers.map((el) => (
-                      <tr key={el.sid}>
+                  {teamMemberPage &&
+                    teamMemberPage.content &&
+                    teamMemberPage.content.length > 0 &&
+                    teamMemberPage.content.map((el) => (
+                      <tr key={el.personSid}>
                         <td>
                           <div
                             className={classNames(
@@ -149,20 +160,27 @@ const TeamMembersPage: NextPage = () => {
                           >
                             {el.profile ? (
                               // eslint-disable-next-line @next/next/no-img-element
-                              <img src={el.profile} alt={el.initials} />
+                              <img src={el.profile} alt={el.initials || getInitials(el.firstName, el?.lastName)} />
                             ) : (
-                              <span className="text-light fs-10">{el.initials}</span>
+                              <span className="text-light fs-10">
+                                {el.initials || getInitials(el.firstName, el?.lastName)}
+                              </span>
                             )}
                           </div>
                         </td>
                         <td className="text-nowrap">
                           {el.firstName} {el.lastName}
+                          {session?.user?.email === el.email && " (You)"}
                         </td>
-                        <td>{el.initials}</td>
+                        <td>{el.initials || getInitials(el.firstName, el?.lastName)}</td>
                         <td className="text-nowrap">{el.email}</td>
-                        <td className="text-nowrap">{el.position}</td>
-                        <td className="text-nowrap">{el.accessRole}</td>
-                        <td className="text-end text-nowrap">{formatMoney(el.rate)}</td>
+                        <td className="text-nowrap">
+                          {session?.user?.email === el.email
+                            ? "Owner"
+                            : staffTypeList?.find((st) => st.id === el.staffType)?.value}
+                        </td>
+                        <td className="text-nowrap">{roleTypeList?.find((rt) => rt.id === el.roleType)?.value}</td>
+                        <td className="text-end text-nowrap">{formatMoney(el.globalHourlyRate || 0)}</td>
                         <td>
                           <div className="d-flex align-items-center" style={{ gap: "0.5rem" }}>
                             <button className="p-0 text-primary bg-transparent border-0">
@@ -181,19 +199,13 @@ const TeamMembersPage: NextPage = () => {
             <div className="d-flex justify-content-center pt-1 pb-4">
               <Pagination />
             </div>
-            <hr />
-            <pre>{JSON.stringify({ teamMemberPage, loading, error }, null, 4)}</pre>
+            {/* <hr />
+            <pre>{JSON.stringify({ teamMemberPage, loading, error }, null, 4)}</pre> */}
           </div>
         </div>
       </ManageLayout>
       <ModalWrapper open={openNewMember} setOpen={setOpenNewMember} title="Add New Member">
-        <TeamMemberForm
-          onSubmit={(e) => {
-            e.preventDefault();
-            const teamMember = Object.fromEntries(new FormData(e.currentTarget));
-            console.log({ teamMember });
-          }}
-        />
+        <TeamMemberForm onSubmitSuccess={closeNewMemberModal} />
       </ModalWrapper>
     </PageLayout>
   );
