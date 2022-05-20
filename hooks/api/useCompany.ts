@@ -28,20 +28,22 @@ async function fetcher(url: string) {
 const useCompany = () => {
   const { data, error } = useSWR(KEY, fetcher);
 
-  const saveCompany = (company: Company) => {
+  const saveCompany = async (company: Company) => {
     mutate(KEY, company, false);
-    axios.put(KEY, company, {
-      headers: {
-        Authorization: `Bearer ${getAccessToken()}`,
-      }
-    }).then(res => {
-      console.log(res);
-    }).catch(err => {
-      console.log(err);
-    });
+
+    try {
+      const res = await axios.put(KEY, company, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return { companyPage: data, error, loading: !data && !error, saveCompany };
-};
+
+}
 
 export default useCompany;
