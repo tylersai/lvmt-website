@@ -5,3 +5,4 @@ export type CommonSelectorType<T = CommonType[]> = {
   error?: any;
   data?: T;
 };
+

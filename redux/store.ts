@@ -3,6 +3,7 @@ import { staffTypeListReducer } from "./reducer/staffTypeReducer";
 import { roleTypeListReducer } from "./reducer/roleTypeReducer";
 import { salutationListReducer } from "./reducer/salutationReducer";
 import { teamMemberFormReducer } from "./reducer/teamMemberReducer";
+import { companyReducer } from "./reducer/companyReducer";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     roleTypeList: roleTypeListReducer,
     salutationList: salutationListReducer,
     teamMemberForm: teamMemberFormReducer,
+    company: companyReducer
   },
 });
 
