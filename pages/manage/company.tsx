@@ -1,28 +1,41 @@
+import { InputGroup, ManageLayout, PageLayout } from "@components";
+import buttonStyles from "@styles/Button.module.scss";
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { PageLayout, ManageLayout, InputGroup } from "@components";
-import buttonStyles from "@styles/Button.module.scss";
-import { MouseEventHandler, useState } from "react";
-
-interface Company {
-  companyName: string;
-  brn: string;
-  tax: string;
-}
-
-const dummyCompany: Company = {
-  companyName: "ABC Law Firm Pte Ltd.",
-  brn: "123456789A",
-  tax: "123456789A",
-};
+import { useSession } from "next-auth/react";
+import { MouseEventHandler, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  editCompanyAction,
+  getCompanyAction,
+} from "redux/action/companyAction";
+import { RootState } from "redux/store";
+import { Company } from "types/model";
 
 const CompanyPage: NextPage = () => {
-  const [company] = useState<Company | null | undefined>(dummyCompany);
+  const dispatch = useDispatch();
+  const { data, status } = useSession();
+  const { loading, company } = useSelector<RootState, any>(
+    (state) => state.company
+  );
+  const [tempData, setTempData] = useState<Company>(company);
+
+  useEffect(() => {
+    dispatch<any>(getCompanyAction(data?.accessToken as string));
+    if (!loading) setTempData(company);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data?.accessToken]);
 
   const goSave: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
-    alert("Feature coming soon...");
+    dispatch<any>(editCompanyAction(data?.accessToken as string, tempData));
   };
+
+  function _onChange(e: React.ChangeEvent<HTMLInputElement>) {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setTempData({ ...tempData, [name]: value });
+  }
 
   return (
     <PageLayout>
@@ -31,27 +44,36 @@ const CompanyPage: NextPage = () => {
           <div className="col-lg-6 px-3 px-md-4 px-lg-5">
             <form>
               <InputGroup
+                name="companyName"
                 className="pb-4"
-                defaultValue={company?.companyName}
+                value={tempData?.companyName}
                 label="Company Name"
                 inputType="text"
                 required
+                onChange={_onChange}
               />
               <InputGroup
+                name="businessRegistrationNumber"
                 className="pb-4"
-                defaultValue={company?.brn}
+                value={tempData?.businessRegistrationNumber}
                 label="Business Registration No."
                 inputType="text"
                 required
+                onChange={_onChange}
               />
               <InputGroup
+                name="taxRegistered"
                 className="pb-4"
-                defaultValue={company?.tax}
+                value={tempData?.taxRegistered}
                 label="Tax Registration No."
                 inputType="text"
                 required
+                onChange={_onChange}
               />
-              <button className={classNames(buttonStyles.Button_primary, "py-2")} onClick={goSave}>
+              <button
+                className={classNames(buttonStyles.Button_primary, "py-2")}
+                onClick={goSave}
+              >
                 Save
               </button>
             </form>
