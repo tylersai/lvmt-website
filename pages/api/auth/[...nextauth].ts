@@ -65,7 +65,7 @@ export default NextAuth({
     },
 
     session: async function session({ session, token }) {
-      session.accessToken = token.accessToken;
+      session.accessToken = token.accessToken as string;
       try {
         const { data } = await axios.get(getFullUrlOrThrow("/website/auth/user/profile"), {
           headers: {
