@@ -3,7 +3,7 @@
 }
 
 .mainArea {
-  min-height: calc(100vh - 42px - 8vw - 3rem);
+  min-height: calc(100svh - 42px - 8vw - 3rem);
 }
 
 // Medium devices (tablets, 768px and up)
@@ -19,7 +19,7 @@
     padding-top: 120px;
   }
   .mainArea {
-    min-height: calc(100vh - 120px - 3rem);
+    min-height: calc(100svh - 120px - 3rem);
   }
 }
 
