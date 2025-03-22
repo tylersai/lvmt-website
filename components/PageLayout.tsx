@@ -5,6 +5,7 @@ interface PageLayoutProp {
   CommonHeadComp?: React.ReactElement;
   hideHeader?: boolean;
   hideFooter?: boolean;
+  children?: React.ReactNode;
 }
 
 export const PageLayout: FC<PageLayoutProp> = ({
